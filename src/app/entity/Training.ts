@@ -1,17 +1,16 @@
 import {Activity} from "./Activity";
-import {Time} from "@angular/common";
 import {User} from "./User";
 
 export class Training {
   private _id: number;
   private _activity: Activity;
   private _count: number;
-  private _startTime: Time;
-  private _endTime: Time;
+  private _startTime: Date;
+  private _endTime: Date;
   private _user: User;
   private _removed: boolean;
 
-  constructor(id: number, activity: Activity, count: number, startTime: Time, endTime: Time, user: User, removed: boolean) {
+  constructor(id: number, activity: Activity, count: number, startTime: Date, endTime: Date, user: User, removed: boolean) {
     this._id = id;
     this._activity = activity;
     this._count = count;
@@ -45,19 +44,19 @@ export class Training {
     this._count = value;
   }
 
-  get startTime(): Time {
+  get startTime(): Date {
     return this._startTime;
   }
 
-  set startTime(value: Time) {
+  set startTime(value: Date) {
     this._startTime = value;
   }
 
-  get endTime(): Time {
+  get endTime(): Date {
     return this._endTime;
   }
 
-  set endTime(value: Time) {
+  set endTime(value: Date) {
     this._endTime = value;
   }
 

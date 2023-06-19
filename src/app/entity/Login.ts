@@ -1,12 +1,11 @@
-import {Time} from "@angular/common";
 import {User} from "./User";
 
 export class Login{
   private _id: number;
   private _user: User;
-  private _loginTime: Time;
+  private _loginTime: Date;
 
-  constructor(id: number, user: User, loginTime: Time) {
+  constructor(id: number, user: User, loginTime: Date) {
     this._id = id;
     this._user = user;
     this._loginTime = loginTime;
@@ -28,11 +27,11 @@ export class Login{
     this._user = value;
   }
 
-  get loginTime(): Time {
+  get loginTime(): Date {
     return this._loginTime;
   }
 
-  set loginTime(value: Time) {
+  set loginTime(value: Date) {
     this._loginTime = value;
   }
 }
