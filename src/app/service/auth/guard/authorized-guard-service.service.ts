@@ -25,7 +25,8 @@ export class UserGuardService implements CanActivate {
   constructor(private router: Router, private jwtService: JwtService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.jwtService.getUserRole() == UserRole.USER) {
+    let role = this.jwtService.getUserRole();
+    if (role == UserRole.USER || role == UserRole.ADMIN) {
       return true;
     } else {
       this.router.navigate(['/login']);

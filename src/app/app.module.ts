@@ -10,6 +10,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import {FormsModule} from "@angular/forms";
+import { UserMainPageComponent } from './pages/users/main-page/user-main-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {FormsModule} from "@angular/forms";
     NavbarComponent,
     MainComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserMainPageComponent
   ],
   imports: [
     BrowserModule,

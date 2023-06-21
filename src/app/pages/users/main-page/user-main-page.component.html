@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="info">
+    <div class="d-flex justify-content-center">
+      <h1>Info</h1>
+    </div>
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item"> {{'Username - ' + user?.username}}</li>
+        <li class="list-group-item"> {{ 'Email - ' + user?.email}}</li>
+        <li class="list-group-item" *ngIf="user?.heightSm!=0">{{'Height - ' + user?.heightSm + ' sm'}}</li>
+        <li class="list-group-item" *ngIf="user?.weightKg!=0"> {{'Width - ' + user?.weightKg + ' kg'}}</li>
+        <li class="list-group-item" *ngIf="user?.sex!=null"> {{'Sex - ' + user?.sex}}</li>
+        <!--        <li class="list-group-item" *ngIf="user.get()>0" ><a href="https://en.wikipedia.org/wiki/Body_mass_index#cite_ref-FOOTNOTEWorld_Health_Organization200521%E2%80%9322_13-0" th:text='${"BMI - " + user.getBMIAsString()}' target="_blank" class="link-dark"></a></li>-->
+      </ul>
+    </div>
+  </div>
+  <hr>
+
+  <div class="info">
+    <div class="d-flex justify-content-center">
+      <h1>Settings</h1>
+    </div>
+    <form class="form-main" (ngSubmit)="updateUser()">
+      <div class="row">
+        <div class="col">
+          <label for="heightSm">Height (sm):</label><br>
+          <input class="form-control" id="heightSm" type="number" min="0" max="300" placeholder="Enter your height"
+                 name="heightSm" [(ngModel)]="heightSm" value="{{user?.heightSm}}"/>
+        </div>
+        <div class="col">
+
+          <label for="weightKg">Weight (kg):</label><br>
+          <input class="form-control" id="weightKg" type="number" min="0" max="300" placeholder="Enter your weight"
+                 name="weightKg" [(ngModel)]="weightKg" value="{{user?.weightKg}}"/>
+        </div>
+        <div class="col">
+          <span>Sex:</span><br>
+          <input class="form-check-input" type="radio" id="female"
+                 name="sex" [(ngModel)]="sex" value="female"
+                 checked='{{user?.sex!=null && user?.sex?.toLowerCase() == "female"}}'>
+          <label for="female">Female</label>
+          <br>
+          <input class="form-check-input" type="radio" id="male"
+                 name="sex" [(ngModel)]="sex" value="male"
+                 checked='{{user?.sex!=null && user?.sex?.toLowerCase() == "male"}}'>
+          <label for="male">Male</label>
+        </div>
+      </div>
+      <br>
+      <input type="submit" class="btn btn-primary" value="Update">
+    </form>
+  </div>
+  <hr>
+    <div class="footer d-flex justify-content-center" *ngIf="user?.userRole == 'ADMIN'">
+      <a class="btn btn-danger" routerLink="/admin">ADMIN PANEL</a>
+    </div>
+</div>

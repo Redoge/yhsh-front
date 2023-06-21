@@ -40,6 +40,15 @@ export class JwtService {
     }
     return UserRole.ANONYMOUS;
   }
+  getUsername(): string {
+    let tokenJwt = this.getToken();
+    let token = this.getDecodeToken(tokenJwt ? tokenJwt : '');
+    if (token != null) {
+      // @ts-ignore
+      return token.sub;
+    }
+    return '';
+  }
 
   private getDecodeToken(token: string): string | null {
     if (token) {
