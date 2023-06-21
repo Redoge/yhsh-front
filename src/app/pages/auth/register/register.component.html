@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+      <form (ngSubmit)="register()" >
+        <h2>Registration</h2>
+        <input type="email"  [(ngModel)]="email" id="email" name="email" placeholder="Email" class="form-control"/>
+        <br>
+        <input type="text" [(ngModel)]="username" name="username" placeholder="Username" class="form-control"/>
+        <br>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" class="form-control"/>
+        <br>
+        <button type="submit" class="btn btn-primary btn-block">Register User</button>
+      </form>
+    <div class="alert alert-danger" role="alert" *ngIf="error" (click)="closeError()">  {{error}}  </div>
+
+  </div>
+</div>
