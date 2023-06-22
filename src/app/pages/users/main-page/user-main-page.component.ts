@@ -15,7 +15,9 @@ export class UserMainPageComponent {
   protected heightSm: number = 0;
   protected weightKg: number = 0 ;
   protected sex: string = '';
+  protected loading: boolean;
   constructor(private userService: UserService, private jwtService: JwtService) {
+    this.loading = true;
     userService.getUser().subscribe(response=>{
       this.user = response;
       this.heightSm = response.heightSm;
@@ -23,6 +25,9 @@ export class UserMainPageComponent {
       this.sex = response.sex;
     }, err => {
       this.error = err;
+      this.loading = false;
+    }, ()=>{
+      this.loading = false;
     });
   }
 
