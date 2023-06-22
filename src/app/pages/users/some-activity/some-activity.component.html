@@ -1,0 +1,44 @@
+<app-loading [loading]="loading"></app-loading>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <h1>{{activity?.name}}</h1>
+  </div>
+  <form (ngSubmit)="add()">
+    <label for="name">Count:</label>
+    <input class="form-control" type="number" id="name" min="1" placeholder="Enter activity name: " [(ngModel)]="count"
+           name="count"><br/>
+    <div class=" d-flex justify-content-center">
+      <input type="submit" class="btn btn-primary" value="Add"/>
+    </div>
+  </form>
+  <hr>
+  <div class="container">
+    <div>
+      <table class="table table-striped table-bordered justify-content-center">
+        <col style="width:20%">
+        <col style="width:70%">
+        <col style="width:10%">
+        <tr>
+          <td>Count</td>
+          <td>Time</td>
+          <td></td>
+        </tr>
+        <tr *ngFor="let training of trainings">
+          <td>{{training?.count + ' ' + activity?.notation}}</td>
+          <td> {{ training.startTime }}</td>
+          <td>
+            <img  (click)="remove(training.id)"
+              ngSrc="/assets/icon/remove.png"
+              height="50" width="50"
+              alt="Remove" title="Remove"/>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="table-bordered d-flex justify-content-center">
+    <form (ngSubmit)="removeActivity()">
+      <button type="submit" class="btn btn-warning">Remove activity</button>
+    </form>
+  </div>
+</div>

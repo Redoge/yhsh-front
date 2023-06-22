@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <h1>New activity</h1>
+  </div>
+  <div class="form">
+    <form class="form-main" (ngSubmit)="newActivity()">
+      <label for="name">Name:</label>
+      <input class="form-control" type="text" id="name" placeholder="Enter activity name: " [(ngModel)]="name"
+             name="name">
+      <label for="notation">Notation:</label>
+      <input class="form-control" type="text" id="notation" placeholder="Enter activity notation: "
+             [(ngModel)]="notation" name="notation">
+      <br>
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+    <br>
+    <div class="alert alert-danger" role="alert" *ngIf="error" (click)="closeError()">  {{error}}  </div>
+  </div>
+</div>
