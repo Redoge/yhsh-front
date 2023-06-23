@@ -25,7 +25,7 @@
         </tr>
         <tr *ngFor="let training of trainings">
           <td>{{training?.count + ' ' + activity?.notation}}</td>
-          <td> {{ training.startTime }}</td>
+          <td> {{ training.startTime | date: 'dd/MM/YYYY HH:mm'  }}</td>
           <td>
             <img  (click)="remove(training.id)"
               ngSrc="/assets/icon/remove.png"
@@ -40,5 +40,7 @@
     <form (ngSubmit)="removeActivity()">
       <button type="submit" class="btn btn-warning">Remove activity</button>
     </form>
+    <br>
+    <div class="alert alert-danger" role="alert" *ngIf="error" (click)="closeError()">  {{error}}  </div>
   </div>
 </div>

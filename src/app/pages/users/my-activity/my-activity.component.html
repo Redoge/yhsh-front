@@ -27,7 +27,7 @@
             <tr *ngFor="let training of trainings">
               <td>{{training.activity.name}}</td>
               <td>{{training?.count + ' ' + training.activity.notation}}</td>
-              <td> {{ training.startTime }}</td>
+              <td> {{ training.startTime | date: 'dd/MM/YYYY HH:mm'}}</td>
             </tr>
           </table>
         </div>

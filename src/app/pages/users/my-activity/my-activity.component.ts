@@ -27,7 +27,7 @@ export class MyActivityComponent {
     });
     this.loading = true;
     this.trainingService.getTrainings().subscribe(res=>{
-      this.trainings = res.filter(t=>!t.removed);
+      this.trainings = res
     })
   }
 

@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {JwtService} from "../jwt/jwt.service";
 import {map} from "rxjs";
 import {UserActivityStatsDto} from "../../dto/UserActivityStatsDto";
+import {DOMAIN_PATH} from "../../util/consts";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class StatsService {
 
   getStats() {
     let username:string = this.jwtService.getUsername();
-    return this.httpClient.get('/user/'+username+'stats').pipe(
+    return this.httpClient.get(DOMAIN_PATH + '/users/'+username+'/stats').pipe(
       map((response: any) => {
         const stats: UserActivityStatsDto[] = response.map((data: any)=>{
           const stat: UserActivityStatsDto = {

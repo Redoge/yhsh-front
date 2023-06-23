@@ -64,4 +64,13 @@ export class ActivityService {
       })
     );
   }
+
+  removeActivityById(id: number) {
+    return this.httpClient.delete(DOMAIN_PATH + '/activities/'+id).pipe(
+      map((response:any)=>{
+        const isDeleted:boolean = response;
+        return isDeleted;
+      })
+    );
+  }
 }

@@ -12,25 +12,32 @@ import {Training} from "../../../entity/Training";
 })
 export class SomeActivityComponent implements OnInit {
   protected activity: Activity | null = null;
-  protected id: number = 0;
+  protected id: number;
   protected count: number = 0;
   protected loading: boolean = false;
   protected trainings: Training[] = [];
+  protected error: string = '';
 
 
   constructor(private activityService: ActivityService, private activatedRoute: ActivatedRoute, private router: Router,
               private trainingService: TrainingService) {
-
+    this.id = parseInt(<string>this.activatedRoute.snapshot.paramMap.get('id'));
   }
 
   removeActivity() {
-    console.log('remove ' + this.id)
+    this.loading = true;
+    this.activityService.removeActivityById(this.id).subscribe(removed=>{
+      this.loading = false;
+      this.router.navigate(['/user/activities'])
+    }, error => {
+      this.error = "Something went wrong...";
+    })
   }
 
   add() {
     this.loading = true
     this.trainingService.saveTraining(this.activity?.id, this.count).subscribe(training => {
-      this.trainings.push(training)
+      this.trainings.unshift(training)
       this.loading = false
     }, err => {
       this.loading = false
@@ -40,10 +47,11 @@ export class SomeActivityComponent implements OnInit {
 
   updateActivity() {
     this.loading = true;
-    this.id = parseInt(<string>this.activatedRoute.snapshot.paramMap.get('id'));
     this.activityService.getActivityById(this.id).subscribe(activity => {
       this.activity = activity;
-      this.trainings = activity.trainings.filter(training => !training.removed)
+      this.trainings = activity.trainings.filter(t=>!t.removed)
+        .sort((a,b)=>
+          new Date(b.startTime).getTime()-new Date(a.startTime).getTime());
     }, err => {
       this.loading = false;
       this.router.navigate([''])
@@ -67,5 +75,9 @@ export class SomeActivityComponent implements OnInit {
       console.log(error)
       this.loading = false;
     });
+  }
+
+  closeError() {
+    this.error = ''
   }
 }
