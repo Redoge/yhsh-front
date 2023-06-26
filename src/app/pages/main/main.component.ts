@@ -10,7 +10,6 @@ import {UserRole} from "../../entity/UserRole";
 })
 export class MainComponent implements OnInit {
 
-
   constructor(private router: Router, private jwtService: JwtService) {
   }
 

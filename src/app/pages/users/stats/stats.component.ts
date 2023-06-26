@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {UserActivityStatsDto} from "../../../dto/UserActivityStatsDto";
 import {StatsService} from "../../../service/stats/stats.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-stats',
@@ -11,7 +12,8 @@ export class StatsComponent {
   protected stats: UserActivityStatsDto[] = []; //TODO
   protected loading: boolean = false;
 
-  constructor(private statsService: StatsService) {
+  constructor(private statsService: StatsService, private titleService: Title) {
+    this.titleService.setTitle("Stats");
     this.loading = true;
     this.statsService.getStats().subscribe(stats => {
       this.stats = stats;

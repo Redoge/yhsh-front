@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/service/user/user.service';
 import {User} from "../../../entity/User";
-import {UserUpdateRequestDto} from "../../../dto/UserUpdateRequestDto";
 import {JwtService} from "../../../service/jwt/jwt.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-main-page',
@@ -16,7 +16,8 @@ export class UserMainPageComponent {
   protected weightKg: number = 0 ;
   protected sex: string = '';
   protected loading: boolean;
-  constructor(private userService: UserService, private jwtService: JwtService) {
+  constructor(private userService: UserService, private jwtService: JwtService, private titleService: Title) {
+    this.titleService.setTitle('Profile');
     this.loading = true;
     userService.getUser().subscribe(response=>{
       this.user = response;

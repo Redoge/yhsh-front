@@ -4,6 +4,7 @@ import {Activity} from "../../../entity/Activity";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TrainingService} from 'src/app/service/training/training.service';
 import {Training} from "../../../entity/Training";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-some-activity',
@@ -20,7 +21,8 @@ export class SomeActivityComponent implements OnInit {
 
 
   constructor(private activityService: ActivityService, private activatedRoute: ActivatedRoute, private router: Router,
-              private trainingService: TrainingService) {
+              private trainingService: TrainingService, private titleService: Title) {
+    this.titleService.setTitle("Activity");
     this.id = parseInt(<string>this.activatedRoute.snapshot.paramMap.get('id'));
   }
 

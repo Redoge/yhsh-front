@@ -1,6 +1,9 @@
 .logout{
   cursor: pointer;
 }
+.icon{
+  margin-right: -15px;
+}
 @media (min-width: 0px) {
   .navbar-expand-sm {
     flex-wrap: nowrap;

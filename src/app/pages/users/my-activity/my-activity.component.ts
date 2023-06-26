@@ -3,6 +3,7 @@ import { ActivityService } from 'src/app/service/activity/activity.service';
 import { TrainingService } from 'src/app/service/training/training.service';
 import {Activity} from "../../../entity/Activity";
 import {Training} from "../../../entity/Training";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-my-activity',
@@ -15,7 +16,8 @@ export class MyActivityComponent {
   protected loading: boolean;
   trainings: Training[] = [];
 
-  constructor(private activityService: ActivityService, private trainingService: TrainingService) {
+  constructor(private activityService: ActivityService, private trainingService: TrainingService, private titleService: Title) {
+    this.titleService.setTitle('My activities');
     this.loading = true;
     activityService.getActivities().subscribe(result =>{
         this.activities = result;
