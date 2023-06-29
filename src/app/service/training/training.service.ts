@@ -2,11 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DOMAIN_PATH} from "../../util/consts";
 import {map} from "rxjs";
-import {AuthenticationResponseDto} from "../../dto/AuthenticationResponseDto";
 import {JwtService} from "../jwt/jwt.service";
 import {Training} from "../../entity/Training";
-import {Activity} from "../../entity/Activity";
-import {User} from "../../entity/User";
 
 @Injectable({
   providedIn: 'root'

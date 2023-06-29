@@ -3,6 +3,7 @@ import {AuthService} from 'src/app/service/auth/auth.service';
 import {JwtService} from "../../../service/jwt/jwt.service";
 import {Router} from "@angular/router";
 import {NavbarUpdateListenerService} from "../../../service/navbar/navbar-update-listener.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent {
   username: string = '';
   error: string = '';
 
-  constructor(private authService: AuthService, private jwtService: JwtService, private router: Router, private navbarService: NavbarUpdateListenerService) {
+  constructor(private authService: AuthService, private jwtService: JwtService, private router: Router, private navbarService: NavbarUpdateListenerService, private titleService: Title) {
+    this.titleService.setTitle('Login');
   }
 
   login() {

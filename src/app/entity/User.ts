@@ -8,4 +8,5 @@ export interface User{
   heightSm: number,
   activities: Activity[],
   userRole: string,
+  enabled: boolean,
 }

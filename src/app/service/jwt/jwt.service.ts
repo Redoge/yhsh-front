@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import jwt_decode from 'jwt-decode';
 import {UserRole} from "../../entity/UserRole";
+import {TOKEN_NAME} from "../../util/consts";
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +9,16 @@ import {UserRole} from "../../entity/UserRole";
 export class JwtService {
   private _token;
   constructor() {
-    this._token = localStorage.getItem("token");
+    this._token = localStorage.getItem(TOKEN_NAME);
   }
 
   saveToken(token: string) {
-    localStorage.setItem("token", token)
+    localStorage.setItem(TOKEN_NAME, token)
     this._token = token;
   }
 
   removeToken() {
-    localStorage.removeItem("token");
+    localStorage.removeItem(TOKEN_NAME);
     this._token = null;
   }
 
@@ -26,7 +27,7 @@ export class JwtService {
     if (!exp) {
       this.removeToken()
     }
-    return localStorage.getItem("token");
+    return localStorage.getItem(TOKEN_NAME);
   }
 
   getUserRole(): UserRole {

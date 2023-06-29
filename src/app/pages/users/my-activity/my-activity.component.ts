@@ -32,6 +32,4 @@ export class MyActivityComponent {
       this.trainings = res
     })
   }
-
-
 }

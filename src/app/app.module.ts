@@ -10,7 +10,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import {FormsModule} from "@angular/forms";
-import { UserMainPageComponent } from './pages/users/main-page/user-main-page.component';
+import { UserMainComponent } from './components/main-page/user-main.component';
 import { MyActivityComponent } from './pages/users/my-activity/my-activity.component';
 import { NewActivityComponent } from './pages/users/new-activity/new-activity.component';
 import { StatsComponent } from './pages/users/stats/stats.component';
@@ -23,6 +23,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ActivityTrainingTableComponent } from './components/activity-training-table/activity-training-table.component';
 import {AuthInterceptor} from "./service/Interceptor/auth.interceptor";
+import { AdminPanelComponent } from './pages/admin/admin-panel/admin-panel.component';
+import { UserTableAdminComponent } from './pages/admin/user-administation/user-table-admin.component';
+import { UserProfilePageComponent } from './pages/users/user-profile-page/user-profile-page.component';
+import { UserPageAdminComponent } from './pages/admin/user-page-admin/user-page-admin.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,7 @@ import {AuthInterceptor} from "./service/Interceptor/auth.interceptor";
     MainComponent,
     LoginComponent,
     RegisterComponent,
-    UserMainPageComponent,
+    UserMainComponent,
     MyActivityComponent,
     NewActivityComponent,
     StatsComponent,
@@ -40,7 +44,11 @@ import {AuthInterceptor} from "./service/Interceptor/auth.interceptor";
     TrainingInActivityComponent,
     StatsBlockComponent,
     LoadingComponent,
-    ActivityTrainingTableComponent
+    ActivityTrainingTableComponent,
+    AdminPanelComponent,
+    UserTableAdminComponent,
+    UserProfilePageComponent,
+    UserPageAdminComponent
   ],
   imports: [
     BrowserModule,
