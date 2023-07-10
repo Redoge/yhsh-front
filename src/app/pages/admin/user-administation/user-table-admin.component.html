@@ -3,23 +3,26 @@
     <div class=" d-flex justify-content-center">
       <h2>Users</h2>
     </div>
-    <table class="table table-striped table-bordered">
-      <thead>
-      <tr>
-        <th scope="col">Username</th>
-        <th scope="col">Email</th>
-        <th scope="col">Role</th>
-        <th scope="col">Active</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr  *ngFor="let user of users">
-        <td><a routerLink="/admin/users/{{user.username}}">{{user.username}}</a></td>
-        <td>{{user.email}}</td>
-        <td (click)="changeRole(user.id)" class="pointer">{{user.userRole}}</td>
-        <td (click)="changeActive(user.id)" class="pointer">{{user.enabled}}</td>
-      </tr>
-      </tbody>
-    </table>
+    <div class="scrolled-table">
+      <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col">Active</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  *ngFor="let user of users">
+          <td><a routerLink="/admin/users/{{user.username}}">{{user.username}}</a></td>
+          <td>{{user.email}}</td>
+          <td (click)="changeRole(user.id)" class="pointer">{{user.userRole}}</td>
+          <td (click)="changeActive(user.id)" class="pointer">{{user.enabled}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>

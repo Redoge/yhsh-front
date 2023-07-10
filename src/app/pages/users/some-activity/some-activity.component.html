@@ -13,26 +13,29 @@
   </form>
   <hr>
   <div class="container">
-    <div>
+    <div class="scrolled-table">
       <table class="table table-striped table-bordered justify-content-center">
-        <col style="width:20%">
-        <col style="width:70%">
-        <col style="width:10%">
+        <thead>
         <tr>
           <td>Count</td>
-          <td>Time</td>
-          <td></td>
+          <td colspan="3">Time</td>
         </tr>
-        <tr *ngFor="let training of trainings">
-          <td>{{training?.count + ' ' + activity?.notation}}</td>
-          <td> {{ training.startTime | date: 'dd/MM/YYYY HH:mm'  }}</td>
-          <td>
-            <img  (click)="remove(training.id)"
-              ngSrc="/assets/icon/remove.png"
-              height="50" width="50"
-              alt="Remove" title="Remove"/>
-          </td>
+        </thead>
+        <tbody *ngFor="let dateTraining of groupedTrainings">
+        <tr>
+          <td class="highlighted-row" colspan="3" ><h6>{{dateTraining.date | date: 'dd MMMM YYYY'}}</h6></td>
         </tr>
+       <tr *ngFor="let training of dateTraining.trainings">
+         <td>{{training?.count + ' ' + activity?.notation}}</td>
+         <td> {{ training.startTime | date: 'HH:mm'  }}</td>
+         <td>
+           <img  (click)="remove(training.id)"
+                 ngSrc="/assets/icon/remove.png"
+                 height="25" width="25"
+                 alt="Remove" title="Remove"/>
+         </td>
+       </tr>
+       </tbody>
       </table>
     </div>
   </div>

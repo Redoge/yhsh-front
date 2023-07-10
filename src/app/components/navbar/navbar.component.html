@@ -1,11 +1,10 @@
 <div *ngIf="role===UserRole.ANONYMOUS">
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <a class="navbar-brand" routerLink="/"><img class="icon" ngSrc="/assets/icon/yhsh.svg" alt="YHSH" height="30" width="120"/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/login">Login</a>
         <a class="nav-item nav-link" routerLink="/register">Register</a>
@@ -14,34 +13,16 @@
   </nav>
 </div>
 
-<div *ngIf="role === UserRole.USER">
+<div *ngIf="role === UserRole.USER || role === UserRole.ADMIN">
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <a class="navbar-brand" routerLink="/"><img class="icon" ngSrc="/assets/icon/yhsh.svg" alt="YHSH" height="30" width="120"/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav">
         <a class="nav-item nav-link " routerLink="/user">Profile</a>
         <a class="nav-item nav-link" routerLink="/user/activities">My activity</a>
-        <a class="nav-item nav-link logout" (click)="logout()" >Logout</a>
-      </div>
-    </div>
-  </nav>
-
-</div><div *ngIf="role === UserRole.ADMIN">
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/"><img class="icon" ngSrc="/assets/icon/yhsh.svg" alt="YHSH" height="30" width="120"/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link " routerLink="/user">Profile</a>
-        <a class="nav-item nav-link" routerLink="/user/activities">My activity</a>
-        <a class="nav-item nav-link " routerLink="/admin">Admin Panel</a>
         <a class="nav-item nav-link logout" (click)="logout()" >Logout</a>
       </div>
     </div>

@@ -31,14 +31,11 @@ export class TrainingService {
       })
     );
   }
-  public getTrainingsByActivityId(activityId: number):Training[]{
-    let trainings: Training[] = [];
-    this.getTrainings().subscribe(res =>{
-       trainings = res;
-    })
-    return trainings.filter(training => training.activity.id === activityId);
+  public getTrainingsByActivityId(activityId: number) {
+    return this.getTrainings().pipe(
+      map(trainings => trainings.filter(training => training.activity.id === activityId))
+    );
   }
-
   removeTrainingById(id:number) {
     return this.httpClient.delete(DOMAIN_PATH + '/trainings/'+id).pipe(
       map((response:any)=>{

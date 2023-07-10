@@ -22,21 +22,27 @@
           <div class="d-flex justify-content-center">
             <h1>Last activities</h1>
           </div>
-          <table class="table table-striped table-bordered">
-            <col style="width:40%">
-            <col style="width:40%">
-            <col style="width:20%">
-            <tr>
-              <td>Activity</td>
-              <td>Count</td>
-              <td>Time</td>
-            </tr>
-            <tr *ngFor="let training of trainings">
-              <td>{{training.activity.name}}</td>
-              <td>{{training?.count + ' ' + training.activity.notation}}</td>
-              <td> {{ training.startTime | date: 'dd/MM/YYYY HH:mm'}}</td>
-            </tr>
-          </table>
+          <div class="scrolled-table">
+            <table class="table table-striped table-bordered">
+              <thead>
+              <tr>
+                <td>Activity</td>
+                <td>Count</td>
+                <td>Time</td>
+              </tr>
+              </thead>
+              <tbody *ngFor="let dateTraining of groupedTrainings">
+              <tr>
+                <td class="highlighted-row" colspan="3" ><h6>{{dateTraining.date | date: 'dd MMMM YYYY'}}</h6></td>
+              </tr>
+              <tr *ngFor="let training of dateTraining.trainings">
+                <td>{{training.activity.name}}</td>
+                <td>{{training?.count + ' ' + training.activity.notation}}</td>
+                <td> {{ training.startTime | date: 'HH:mm'}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

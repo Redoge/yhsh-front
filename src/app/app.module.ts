@@ -48,7 +48,7 @@ import { UserPageAdminComponent } from './pages/admin/user-page-admin/user-page-
     AdminPanelComponent,
     UserTableAdminComponent,
     UserProfilePageComponent,
-    UserPageAdminComponent
+    UserPageAdminComponent,
   ],
   imports: [
     BrowserModule,

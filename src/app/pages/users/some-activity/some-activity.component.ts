@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TrainingService} from 'src/app/service/training/training.service';
 import {Training} from "../../../entity/Training";
 import {Title} from "@angular/platform-browser";
+import {GroupedTrainingsDto} from "../../../dto/GroupedTrainingsDto";
+import {TrainingGrouperService} from "../../../service/util/grouper/training/training-grouper.service";
 
 @Component({
   selector: 'app-some-activity',
@@ -16,12 +18,12 @@ export class SomeActivityComponent implements OnInit {
   protected id: number;
   protected count: number = 0;
   protected loading: boolean = false;
-  protected trainings: Training[] = [];
+  protected groupedTrainings: GroupedTrainingsDto[] = [];
   protected error: string = '';
 
 
   constructor(private activityService: ActivityService, private activatedRoute: ActivatedRoute, private router: Router,
-              private trainingService: TrainingService, private titleService: Title) {
+              private trainingService: TrainingService, private titleService: Title, private trainingGrouper: TrainingGrouperService) {
     this.titleService.setTitle("Activity");
     this.id = parseInt(<string>this.activatedRoute.snapshot.paramMap.get('id'));
   }
@@ -39,21 +41,26 @@ export class SomeActivityComponent implements OnInit {
   add() {
     this.loading = true
     this.trainingService.saveTraining(this.activity?.id, this.count).subscribe(training => {
-      this.trainings.unshift(training)
+      this.updateTrainings()
       this.loading = false
     }, err => {
       this.loading = false
     })
-
   }
 
+  private updateTrainings() {
+    this.loading = true;
+    let res;
+    this.trainingService.getTrainingsByActivityId(this.id).subscribe(trainings => {
+      this.groupedTrainings = this.trainingGrouper.groupByDate(trainings)
+      this.loading = false;
+    });
+  }
   updateActivity() {
     this.loading = true;
     this.activityService.getActivityById(this.id).subscribe(activity => {
       this.activity = activity;
-      this.trainings = activity.trainings.filter(t=>!t.removed)
-        .sort((a,b)=>
-          new Date(b.startTime).getTime()-new Date(a.startTime).getTime());
+      this.updateTrainings()
     }, err => {
       this.loading = false;
       this.router.navigate([''])
@@ -69,9 +76,7 @@ export class SomeActivityComponent implements OnInit {
   remove(trainingId: number) {
     this.loading = true;
     this.trainingService.removeTrainingById(trainingId).subscribe(isDeleted => {
-      if (isDeleted) {
-        this.trainings = this.trainings.filter(t => t.id !== trainingId)
-      }
+      this.updateTrainings();
       this.loading = false;
     }, error => {
       console.log(error)
