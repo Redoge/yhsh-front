@@ -14,10 +14,10 @@ export class UserMainComponent implements OnChanges {
   protected heightSm: number = 0;
   protected weightKg: number = 0 ;
   protected sex: string = '';
-  protected loading: boolean;
+  protected bmi: number = 0;
+  protected loading = true;
 
   constructor(private userService: UserService) {
-    this.loading = true;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -29,10 +29,7 @@ export class UserMainComponent implements OnChanges {
   getUserByUsername() {
     this.userService.getUserByUsername(this.username).subscribe(
       response => {
-        this.user = response;
-        this.heightSm = response.heightSm;
-        this.weightKg = response.weightKg;
-        this.sex = response.sex;
+        this.mapFieldByUserResponse(response);
         this.loading = false;
       },
       err => {
@@ -43,16 +40,23 @@ export class UserMainComponent implements OnChanges {
   }
 
   updateUser() {
+    this.loading = true;
     this.userService.updateUser(this.username, this.heightSm, this.weightKg, this.sex).subscribe(
       response => {
-        this.user = response;
-        this.heightSm = response.heightSm;
-        this.weightKg = response.weightKg;
-        this.sex = response.sex;
+        this.mapFieldByUserResponse(response);
+        this.loading = false;
       },
       err => {
+        this.loading = false;
         this.error = err;
       }
     );
+  }
+  private mapFieldByUserResponse(user: User){
+    this.user = user;
+    this.heightSm = user.heightSm;
+    this.weightKg = user.weightKg;
+    this.sex = user.sex;
+    this.bmi = this.userService.calculateBmi(this.heightSm, this.weightKg);
   }
 }

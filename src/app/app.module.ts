@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainComponent } from './pages/main/main.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {NgOptimizedImage} from "@angular/common";
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
@@ -27,7 +27,14 @@ import { AdminPanelComponent } from './pages/admin/admin-panel/admin-panel.compo
 import { UserTableAdminComponent } from './pages/admin/user-administation/user-table-admin.component';
 import { UserProfilePageComponent } from './pages/users/user-profile-page/user-profile-page.component';
 import { UserPageAdminComponent } from './pages/admin/user-page-admin/user-page-admin.component';
+import { I18nBlockComponent } from './components/i18n-block/i18n-block.component';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {LangService} from "./service/lang/lang.service";
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +56,7 @@ import { UserPageAdminComponent } from './pages/admin/user-page-admin/user-page-
     UserTableAdminComponent,
     UserProfilePageComponent,
     UserPageAdminComponent,
+    I18nBlockComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,9 +65,16 @@ import { UserPageAdminComponent } from './pages/admin/user-page-admin/user-page-
     HttpClientModule,
     FormsModule,
     MatProgressSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, LangService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
