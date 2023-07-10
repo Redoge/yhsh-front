@@ -1,5 +1,5 @@
 <div *ngIf="role===UserRole.ANONYMOUS">
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <nav class="navbar navbar-expand-sm navbar-light">
     <a class="navbar-brand" routerLink="/"><img class="icon" ngSrc="/assets/icon/yhsh.svg" alt="YHSH" height="30" width="120"/></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,12 +10,13 @@
         <a class="nav-item nav-link" routerLink="/register">{{'register' | translate}}</a>
       </div>
       <app-i18n-block class="nav-item lang"></app-i18n-block>
+      <app-theme-toggle class="nav-item theme"></app-theme-toggle>
     </div>
   </nav>
 </div>
 
 <div *ngIf="role === UserRole.USER || role === UserRole.ADMIN">
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <nav class="navbar navbar-expand-sm navbar-light">
     <a class="navbar-brand" routerLink="/"><img class="icon" ngSrc="/assets/icon/yhsh.svg" alt="YHSH" height="30" width="120"/></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -29,6 +30,7 @@
         <a class="nav-item nav-link logout" (click)="logout()" >{{'logout' | translate}}</a>
       </div>
       <app-i18n-block class="nav-item lang"></app-i18n-block>
+      <app-theme-toggle class="nav-item theme"></app-theme-toggle>
     </div>
   </nav>
 </div>

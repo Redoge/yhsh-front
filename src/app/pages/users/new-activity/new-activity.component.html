@@ -11,7 +11,7 @@
       <input class="form-control" type="text" id="notation" placeholder="{{'enter_activity_notation' |translate}}: "
              [(ngModel)]="notation" name="notation">
       <br>
-      <button type="submit" class="btn btn-primary">{{'create'|translate}}</button>
+      <button type="submit" class="btn btn-secondary">{{'create'|translate}}</button>
     </form>
     <br>
     <div class="alert alert-danger" role="alert" *ngIf="error" (click)="closeError()">  {{error}}  </div>

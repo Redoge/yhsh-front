@@ -12,7 +12,7 @@
         <li class="list-group-item" *ngIf="weightKg!=0">{{'weight' | translate}}: {{user?.weightKg}} {{'kg' | translate}}</li>
         <li class="list-group-item" *ngIf="sex!=null">{{'gender' | translate}}: {{user?.sex || '' | translate}}</li>
         <li class="list-group-item" *ngIf="bmi>0" >
-          <a href="https://en.wikipedia.org/wiki/Body_mass_index#cite_ref-FOOTNOTEWorld_Health_Organization200521%E2%80%9322_13-0" target="_blank" class="link-dark">
+          <a href="https://en.wikipedia.org/wiki/Body_mass_index#cite_ref-FOOTNOTEWorld_Health_Organization200521%E2%80%9322_13-0" target="_blank" class="link-secondary">
             {{'bmi' | translate}}: {{bmi | number:'1.2-2'}}
           </a>
         </li>
@@ -49,9 +49,9 @@
                  checked='{{user?.sex!=null && user?.sex?.toLowerCase() == "male"}}'>
           <label for="male">{{'male' | translate}}</label>
         </div>
+        <button type="submit" class="btn btn-secondary mt-3">{{'update' | translate}}</button>
       </div>
       <br>
-      <button type="submit" class="btn btn-primary">{{'update' | translate}}</button>
     </form>
   </div>
   <hr>

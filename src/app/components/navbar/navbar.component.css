@@ -12,4 +12,8 @@
     position: absolute;
     right:1em;
   }
+  .theme{
+    position: absolute;
+    right:6em;
+  }
 }

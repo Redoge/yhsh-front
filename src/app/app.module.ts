@@ -31,6 +31,7 @@ import { I18nBlockComponent } from './components/i18n-block/i18n-block.component
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {LangService} from "./service/lang/lang.service";
+import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -57,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserProfilePageComponent,
     UserPageAdminComponent,
     I18nBlockComponent,
+    ThemeToggleComponent,
   ],
   imports: [
     BrowserModule,

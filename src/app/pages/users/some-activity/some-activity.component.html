@@ -8,7 +8,7 @@
     <input class="form-control" type="number" id="name" min="1" [(ngModel)]="count"
            name="count"><br/>
     <div class=" d-flex justify-content-center">
-      <input type="submit" class="btn btn-primary" value="{{'add' | translate}}"/>
+      <input type="submit" class="btn btn-secondary" value="{{'add' | translate}}"/>
     </div>
   </form>
   <hr>
@@ -23,7 +23,7 @@
         </thead>
         <tbody *ngFor="let dateTraining of groupedTrainings">
         <tr>
-          <td class="highlighted-row" colspan="3" ><h6>{{ dateTraining.date | date:'dd' }} {{ (dateTraining.date | date:'MMMM') || '' | translate }} {{ dateTraining.date | date:'yyyy' }}</h6></td>
+          <td class="bg-body-secondary" colspan="3" ><h6>{{ dateTraining.date | date:'dd' }} {{ (dateTraining.date | date:'MMMM') || '' | translate }} {{ dateTraining.date | date:'yyyy' }}</h6></td>
         </tr>
        <tr *ngFor="let training of dateTraining.trainings">
          <td>{{training?.count + ' ' + activity?.notation}}</td>
@@ -41,7 +41,7 @@
   </div>
   <div class="table-bordered d-flex justify-content-center">
     <form (ngSubmit)="removeActivity()">
-      <button type="submit" class="btn btn-warning">{{'remove_activity' | translate}}</button>
+      <button type="submit" class="btn btn-secondary">{{'remove_activity' | translate}}</button>
     </form>
     <br>
     <div class="alert alert-danger" role="alert" *ngIf="error" (click)="closeError()">  {{error}}  </div>

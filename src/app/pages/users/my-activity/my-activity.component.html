@@ -27,7 +27,7 @@
               </thead>
               <tbody *ngFor="let dateTraining of groupedTrainings">
               <tr>
-                <td class="highlighted-row" colspan="3" >
+                <td class="bg-body-secondary" colspan="3" >
                   <h6>{{ dateTraining.date | date:'dd' }} {{ (dateTraining.date | date:'MMMM') || '' | translate }} {{ dateTraining.date | date:'yyyy' }}
                   </h6></td>
               </tr>

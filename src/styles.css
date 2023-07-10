@@ -6,6 +6,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   overflow: auto;
 }
 .highlighted-row{
-  background-color: #dadcc6 !important;
+  /*background-color: #dadcc6 !important;*/
   font-weight: bold !important;
 }
