@@ -64,4 +64,7 @@ export class UserService {
       })
     );
   }
+  calculateBmi(h: number, w: number) {
+    return (w / Math.pow((h/100), 2))
+  }
 }

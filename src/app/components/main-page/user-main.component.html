@@ -2,56 +2,60 @@
 <div class="container">
   <div class="info">
     <div class="d-flex justify-content-center">
-      <h1>Info</h1>
+      <h1>{{'user' | translate}}</h1>
     </div>
     <div>
       <ul class="list-group">
-        <li class="list-group-item"> {{'Username - ' + user?.username}}</li>
-        <li class="list-group-item"> {{ 'Email - ' + user?.email}}</li>
-        <li class="list-group-item" *ngIf="user?.heightSm!=0">{{'Height - ' + user?.heightSm + ' sm'}}</li>
-        <li class="list-group-item" *ngIf="user?.weightKg!=0"> {{'Width - ' + user?.weightKg + ' kg'}}</li>
-        <li class="list-group-item" *ngIf="user?.sex!=null"> {{'Sex - ' + user?.sex}}</li>
-        <!--        <li class="list-group-item" *ngIf="user.get()>0" ><a href="https://en.wikipedia.org/wiki/Body_mass_index#cite_ref-FOOTNOTEWorld_Health_Organization200521%E2%80%9322_13-0" th:text='${"BMI - " + user.getBMIAsString()}' target="_blank" class="link-dark"></a></li>-->
+        <li class="list-group-item"> {{'username' | translate}}: {{user?.username}}</li>
+        <li class="list-group-item"> Email: {{user?.email}}</li>
+        <li class="list-group-item" *ngIf="heightSm!=0">{{'height' | translate}}: {{user?.heightSm}} {{'cm' | translate}}</li>
+        <li class="list-group-item" *ngIf="weightKg!=0">{{'weight' | translate}}: {{user?.weightKg}} {{'kg' | translate}}</li>
+        <li class="list-group-item" *ngIf="sex!=null">{{'gender' | translate}}: {{user?.sex || '' | translate}}</li>
+        <li class="list-group-item" *ngIf="bmi>0" >
+          <a href="https://en.wikipedia.org/wiki/Body_mass_index#cite_ref-FOOTNOTEWorld_Health_Organization200521%E2%80%9322_13-0" target="_blank" class="link-dark">
+            {{'bmi' | translate}}: {{bmi | number:'1.2-2'}}
+          </a>
+        </li>
       </ul>
     </div>
   </div>
   <hr>
   <div class="info">
     <div class="d-flex justify-content-center">
-      <h1>Settings</h1>
+      <h1>{{'settings' | translate}}</h1>
     </div>
     <form class="form-main" (ngSubmit)="updateUser()">
       <div class="row">
         <div class="col">
-          <label for="heightSm">Height (sm):</label><br>
+          <label for="heightSm">{{'height' | translate}} ({{'cm' | translate}}):</label><br>
           <input class="form-control" id="heightSm" type="number" min="0" max="300" placeholder="Enter your height"
                  name="heightSm" [(ngModel)]="heightSm" value="{{user?.heightSm}}"/>
         </div>
         <div class="col">
 
-          <label for="weightKg">Weight (kg):</label><br>
+          <label for="weightKg">{{'weight' | translate}} ({{'kg' | translate}}):</label><br>
           <input class="form-control" id="weightKg" type="number" min="0" max="300" placeholder="Enter your weight"
                  name="weightKg" [(ngModel)]="weightKg" value="{{user?.weightKg}}"/>
         </div>
         <div class="col">
-          <span>Sex:</span><br>
+          <span>{{'gender' | translate}}:</span><br>
           <input class="form-check-input" type="radio" id="female"
                  name="sex" [(ngModel)]="sex" value="female"
                  checked='{{user?.sex!=null && user?.sex?.toLowerCase() == "female"}}'>
-          <label for="female">Female</label>
+          <label for="female">{{'female' | translate}}</label>
           <br>
           <input class="form-check-input" type="radio" id="male"
                  name="sex" [(ngModel)]="sex" value="male"
                  checked='{{user?.sex!=null && user?.sex?.toLowerCase() == "male"}}'>
-          <label for="male">Male</label>
+          <label for="male">{{'male' | translate}}</label>
         </div>
       </div>
       <br>
-      <input type="submit" class="btn btn-primary" value="Update">
+      <button type="submit" class="btn btn-primary">{{'update' | translate}}</button>
     </form>
   </div>
   <hr>
     <div class="footer d-flex justify-content-center" *ngIf="user?.userRole == 'ADMIN'">
-      <a class="btn btn-danger" routerLink="/admin">ADMIN PANEL</a>
+      <a class="btn btn-danger" routerLink="/admin">{{'admin_panel' | translate}}</a>
     </div>
 </div>

@@ -1,13 +1,13 @@
 <div class="container">
   <form (ngSubmit)="login()">
-    <h2>Login</h2>
-    <input class="form-control" type="text" id="username" [(ngModel)]="username" name="username" placeholder="Username"
+    <h2>{{'login' | translate}}</h2>
+    <input class="form-control" type="text" id="username" [(ngModel)]="username" name="username" placeholder="{{'username' | translate}}"
            required>
     <br>
     <input class="form-control" type="password" [(ngModel)]="password" id="password" name="password"
-           placeholder="Password" required>
+           placeholder="{{'password' | translate}}" required>
     <br>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">{{'login' | translate}}</button>
   </form><br>
   <div class="alert alert-danger" role="alert" *ngIf="error" (click)="closeError()">  {{error}}  </div>
 </div>

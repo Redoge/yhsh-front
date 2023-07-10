@@ -7,3 +7,9 @@
 #navbarNav{
   padding-left: 10px !important;
 }
+@media (min-width:576px) {
+  .lang{
+    position: absolute;
+    right:1em;
+  }
+}

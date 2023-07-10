@@ -4,36 +4,32 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="d-flex justify-content-center">
-          <h1>My Activities</h1>
-        </div>
-        <div class="d-flex justify-content-center">
-          <h3><a class="nav-item nav-link text-secondary" routerLink="/user/stats">Stats</a></h3>
+          <h1>{{'my_activity' | translate}}</h1>
         </div>
         <ul class="list-group">
           <app-link-activity *ngFor="let activity of activities" [activity]="activity"></app-link-activity>
         </ul>
       </div>
-      <div class="d-flex justify-content-center">
-        <h3><a class="nav-item nav-link text-muted" routerLink="/user/activities/new">New activity</a></h3>
-      </div>
       <hr>
       <div class="col-xs-6">
         <div>
           <div class="d-flex justify-content-center">
-            <h1>Last activities</h1>
+            <h1>{{'last_trainings' | translate}}</h1>
           </div>
           <div class="scrolled-table">
             <table class="table table-striped table-bordered">
               <thead>
               <tr>
-                <td>Activity</td>
-                <td>Count</td>
-                <td>Time</td>
+                <td>{{'activity' | translate}}</td>
+                <td>{{'count' | translate}}</td>
+                <td>{{'time' | translate}}</td>
               </tr>
               </thead>
               <tbody *ngFor="let dateTraining of groupedTrainings">
               <tr>
-                <td class="highlighted-row" colspan="3" ><h6>{{dateTraining.date | date: 'dd MMMM YYYY'}}</h6></td>
+                <td class="highlighted-row" colspan="3" >
+                  <h6>{{ dateTraining.date | date:'dd' }} {{ (dateTraining.date | date:'MMMM') || '' | translate }} {{ dateTraining.date | date:'yyyy' }}
+                  </h6></td>
               </tr>
               <tr *ngFor="let training of dateTraining.trainings">
                 <td>{{training.activity.name}}</td>

@@ -2,19 +2,19 @@
   <div class="card-header">{{stat?.name}}</div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
-      {{'Trainings: ' + stat?.trainingsCount}}
+      {{'trainings' | translate}}: {{stat?.trainingsCount}}
     </li>
     <li class="list-group-item">
-      {{'Avg: ' + stat?.avg + ' ' + stat?.notation}}
+      {{'avg' | translate}}: {{stat?.avg + ' ' + stat?.notation}}
     </li>
     <li class="list-group-item">
-      {{'Sum: ' + stat?.sum + ' ' + stat?.notation}}
+      {{'sum' | translate}}: {{stat?.sum + ' ' + stat?.notation}}
     </li>
     <li class="list-group-item">
-      {{'Max: ' + stat?.max + ' ' + stat?.notation}}
+      {{'max' | translate}}: {{stat?.max + ' ' + stat?.notation}}
     </li>
     <li class="list-group-item">
-      {{'Min: ' + stat?.min + ' ' + stat?.notation}}
+      {{'min' | translate}}: {{stat?.min + ' ' + stat?.notation}}
     </li>
   </ul>
 </div>
