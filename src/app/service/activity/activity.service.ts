@@ -13,37 +13,18 @@ export class ActivityService {
 
   constructor(private httpClient: HttpClient, private jwtService: JwtService) { }
 
-  getActivities() {
-    let username = this.jwtService.getUsername();
+  getActivitiesByUserUsername(username: string) {
     return this.httpClient.get(DOMAIN_PATH + '/activities?username=' + username).pipe(
       map((response: any) => {
-        const activities: Activity[] = response.map((activityData: any) => {
-          const activity: Activity = {
-            id: activityData.id,
-            name: activityData.name,
-            notation: activityData.notation,
-            creator: activityData.creator,
-            trainings: activityData.trainings,
-            removed: activityData.removed
-          };
-          return activity;
-        });
+        const activities: Activity[] = response
         return activities;
       })
     );
   }
-
   createActivity(name: string, notation: string, username: string) {
     return this.httpClient.post(DOMAIN_PATH + '/activities', { name, notation, username }).pipe(
       map((response: any) => {
-        const activity: Activity = {
-          id: response.id,
-          name: response.name,
-          notation: response.notation,
-          creator: response.creator,
-          trainings: response.trainings,
-          removed: response.removed
-        };
+        const activity: Activity = response
         return activity;
       })
     );
@@ -52,14 +33,7 @@ export class ActivityService {
   getActivityById(id: number) {
     return this.httpClient.get(DOMAIN_PATH + '/activities/'+id).pipe(
       map((response: any) => {
-        const activity: Activity = {
-          id: response.id,
-          name: response.name,
-          notation: response.notation,
-          creator: response.creator,
-          trainings: response.trainings,
-          removed: response.removed
-        };
+        const activity: Activity = response
         return activity;
       })
     );

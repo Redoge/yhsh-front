@@ -12,22 +12,10 @@ export class StatsService {
 
   constructor(private httpClient: HttpClient, private jwtService:JwtService) { }
 
-  getStats() {
-    let username:string = this.jwtService.getUsername();
+  getStatsByUsername(username: string) {
     return this.httpClient.get(DOMAIN_PATH + '/users/'+username+'/stats').pipe(
       map((response: any) => {
-        const stats: UserActivityStatsDto[] = response.map((data: any)=>{
-          const stat: UserActivityStatsDto = {
-            name: data.name,
-            sum: data.sum,
-            min: data.min,
-            max: data.max,
-            avg: data.avg,
-            trainingsCount: data.trainingsCount,
-            notation: data.notation
-          };
-          return stat;
-        })
+        const stats: UserActivityStatsDto[] = response
         return stats;
       })
     );

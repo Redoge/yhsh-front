@@ -11,9 +11,9 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import {FormsModule} from "@angular/forms";
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { MyActivityComponent } from './pages/users/my-activity/my-activity.component';
+import { MyActivityPageComponent } from './pages/users/my-activity/my-activity-page.component';
 import { NewActivityComponent } from './pages/users/new-activity/new-activity.component';
-import { StatsComponent } from './pages/users/stats/stats.component';
+import { StatsPageComponent } from './pages/users/stats/stats-page.component';
 import { SomeActivityComponent } from './pages/users/some-activity/some-activity.component';
 import { TrainingInActivityComponent } from './components/training-in-activity/training-in-activity.component';
 import { StatsBlockComponent } from './components/stats-block/stats-block.component';
@@ -32,6 +32,10 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {LangService} from "./service/lang/lang.service";
 import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 import { ActivityCardComponent } from './components/activity-card/activity-card.component';
+import { UserActivityComponent } from './components/user-activity/user-activity.component';
+import { UserStatsAdminComponent } from './pages/admin/user-stats-admin/user-stats-admin.component';
+import { UserActivityAdminComponent } from './pages/admin/user-activity-admin/user-activity-admin.component';
+import { UserStatsComponent } from './components/user-stats/user-stats.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,9 +48,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     RegisterComponent,
     UserProfileComponent,
-    MyActivityComponent,
+    MyActivityPageComponent,
     NewActivityComponent,
-    StatsComponent,
+    StatsPageComponent,
     SomeActivityComponent,
     TrainingInActivityComponent,
     StatsBlockComponent,
@@ -59,6 +63,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     I18nBlockComponent,
     ThemeToggleComponent,
     ActivityCardComponent,
+    UserActivityComponent,
+    UserStatsAdminComponent,
+    UserActivityAdminComponent,
+    UserStatsComponent,
   ],
   imports: [
     BrowserModule,

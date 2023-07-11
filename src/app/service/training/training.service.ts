@@ -4,13 +4,15 @@ import {DOMAIN_PATH} from "../../util/consts";
 import {map} from "rxjs";
 import {JwtService} from "../jwt/jwt.service";
 import {Training} from "../../entity/Training";
+import {ActivityService} from "../activity/activity.service";
+import {Activity} from "../../entity/Activity";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainingService {
 
-  constructor(private httpClient: HttpClient, private jwtService: JwtService) { }
+  constructor(private httpClient: HttpClient, private jwtService: JwtService, private activityService: ActivityService) { }
 
   saveTraining(activityId: number | undefined, count: number) {
     const start = new Date().toISOString();
@@ -22,8 +24,7 @@ export class TrainingService {
       })
     );
   }
-  getTrainings(){
-    const username = this.jwtService.getUsername();
+  getTrainingsByUserUsername(username:string){
     return this.httpClient.get(DOMAIN_PATH + '/trainings?username='+username).pipe( //TODO
       map((response: any) => {
         const training: Training[] = response;
@@ -32,9 +33,10 @@ export class TrainingService {
     );
   }
   public getTrainingsByActivityId(activityId: number) {
-    return this.getTrainings().pipe(
-      map(trainings => trainings.filter(training => training.activity.id === activityId))
-    );
+    return this.activityService.getActivityById(activityId).pipe(map((response: any) =>{
+      const activity: Activity = response
+      return activity.trainings
+    }))
   }
   removeTrainingById(id:number) {
     return this.httpClient.delete(DOMAIN_PATH + '/trainings/'+id).pipe(

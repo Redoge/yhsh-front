@@ -1,1 +1,9 @@
 <app-main-user [username]="username" ></app-main-user>
+<div class="container">
+  <div>
+    <ul class="list-group">
+      <li class="list-group-item "><a class="nav-link" routerLink="/admin/users/{{username}}/activities">{{'activity' | translate}}</a></li>
+      <li class="list-group-item "><a class="nav-link" routerLink="/admin/users/{{username}}/stats">{{'stats' | translate}}</a></li>
+    </ul>
+  </div>
+</div>
