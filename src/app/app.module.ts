@@ -10,12 +10,11 @@ import {NgOptimizedImage} from "@angular/common";
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import {FormsModule} from "@angular/forms";
-import { UserMainComponent } from './components/main-page/user-main.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MyActivityComponent } from './pages/users/my-activity/my-activity.component';
 import { NewActivityComponent } from './pages/users/new-activity/new-activity.component';
 import { StatsComponent } from './pages/users/stats/stats.component';
 import { SomeActivityComponent } from './pages/users/some-activity/some-activity.component';
-import { LinkActivityComponent } from './components/link-activity/link-activity.component';
 import { TrainingInActivityComponent } from './components/training-in-activity/training-in-activity.component';
 import { StatsBlockComponent } from './components/stats-block/stats-block.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -32,6 +31,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {LangService} from "./service/lang/lang.service";
 import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
+import { ActivityCardComponent } from './components/activity-card/activity-card.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -43,12 +43,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainComponent,
     LoginComponent,
     RegisterComponent,
-    UserMainComponent,
+    UserProfileComponent,
     MyActivityComponent,
     NewActivityComponent,
     StatsComponent,
     SomeActivityComponent,
-    LinkActivityComponent,
     TrainingInActivityComponent,
     StatsBlockComponent,
     LoadingComponent,
@@ -59,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserPageAdminComponent,
     I18nBlockComponent,
     ThemeToggleComponent,
+    ActivityCardComponent,
   ],
   imports: [
     BrowserModule,

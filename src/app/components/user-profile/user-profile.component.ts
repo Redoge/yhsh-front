@@ -4,10 +4,10 @@ import { User } from "../../entity/User";
 
 @Component({
   selector: 'app-main-user',
-  templateUrl: './user-main.component.html',
-  styleUrls: ['./user-main.component.css']
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.css']
 })
-export class UserMainComponent implements OnChanges {
+export class UserProfileComponent implements OnChanges {
   @Input() username: string = '';
   protected user: User|null = null;
   protected error: string = '';
