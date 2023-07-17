@@ -36,6 +36,7 @@ import { UserActivityComponent } from './components/user-activity/user-activity.
 import { UserStatsAdminComponent } from './pages/admin/user-stats-admin/user-stats-admin.component';
 import { UserActivityAdminComponent } from './pages/admin/user-activity-admin/user-activity-admin.component';
 import { UserStatsComponent } from './components/user-stats/user-stats.component';
+import { EmailActivateComponent } from './components/email-activate-modal/email-activate.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -67,6 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserStatsAdminComponent,
     UserActivityAdminComponent,
     UserStatsComponent,
+    EmailActivateComponent,
   ],
   imports: [
     BrowserModule,

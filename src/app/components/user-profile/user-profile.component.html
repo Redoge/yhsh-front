@@ -7,7 +7,11 @@
     <div>
       <ul class="list-group">
         <li class="list-group-item"> {{'username' | translate}}: {{user?.username}}</li>
-        <li class="list-group-item"> Email: {{user?.email}}</li>
+        <li class="list-group-item">
+          <div>Email: {{user?.email}}
+            <app-email-activate-modal *ngIf="!user?.emailConfirmed"></app-email-activate-modal>
+          </div>
+        </li>
         <li class="list-group-item" *ngIf="heightSm!=0">{{'height' | translate}}: {{user?.heightSm}} {{'cm' | translate}}</li>
         <li class="list-group-item" *ngIf="weightKg!=0">{{'weight' | translate}}: {{user?.weightKg}} {{'kg' | translate}}</li>
         <li class="list-group-item" *ngIf="sex!=null">{{'gender' | translate}}: {{user?.sex || '' | translate}}</li>

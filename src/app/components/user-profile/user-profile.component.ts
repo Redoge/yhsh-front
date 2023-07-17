@@ -59,4 +59,6 @@ export class UserProfileComponent implements OnChanges {
     this.sex = user.sex;
     this.bmi = this.userService.calculateBmi(this.heightSm, this.weightKg);
   }
+
+  protected readonly Boolean = Boolean;
 }

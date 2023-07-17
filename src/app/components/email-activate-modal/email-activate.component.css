@@ -1,0 +1,33 @@
+.modal {
+  display: none; /* Початково приховуємо модальне вікно */
+  position: fixed; /* Фіксована позиція */
+  z-index: 1; /* Встановлюємо вищий значення z-index, ніж у інших елементів на сторінці */
+  left: 0;
+  top: 0;
+  width: 100%; /* Розмір на весь екран */
+  height: 100%;
+  overflow: auto; /* Додаткова прокрутка, якщо контент занадто великий */
+  /*background-color: rgba(0,0,0,0.4); !* Легко змінюємо колір фону і прозорість *!*/
+}
+
+.modal-content {
+  /*background-color: #fefefe;*/
+  margin: 15% auto; /* Центруємо модальне вікно вертикально і горизонтально */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Задаємо ширину модального вікна */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

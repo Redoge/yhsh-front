@@ -9,4 +9,5 @@ export interface User{
   activities: Activity[],
   userRole: string,
   enabled: boolean,
+  emailConfirmed: boolean
 }
