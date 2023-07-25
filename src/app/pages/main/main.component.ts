@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     const role = this.jwtService.getUserRole();
     if (role === UserRole.USER || role === UserRole.ADMIN) {
-      this.router.navigate(['/user']);
+      this.router.navigate(['/user/activities']);
     } else{
       this.router.navigate(['/login']);
     }

@@ -12,7 +12,7 @@ import {TrainingGrouperService} from "../../service/util/grouper/training/traini
 })
 export class UserActivityComponent implements OnChanges {
   @Input() username: string = '';
-  protected activities: Activity[] = [];
+  protected activities: Activity[] | undefined;
   protected errors: string = '';
   protected loading: boolean = false;
   groupedTrainings: GroupedTrainingsDto[] = [];

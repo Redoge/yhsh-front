@@ -37,6 +37,11 @@ import { UserStatsAdminComponent } from './pages/admin/user-stats-admin/user-sta
 import { UserActivityAdminComponent } from './pages/admin/user-activity-admin/user-activity-admin.component';
 import { UserStatsComponent } from './components/user-stats/user-stats.component';
 import { EmailActivateComponent } from './components/email-activate-modal/email-activate.component';
+import { UserAllWorkoutsComponent } from './components/user-all-workouts/user-all-workouts.component';
+import { UserAllWorkoutsPageComponent } from './pages/users/user-all-workouts-page/user-all-workouts-page.component';
+import { NewWorkoutComponent } from './pages/users/new-workout/new-workout.component';
+import { WorkoutCardComponent } from './components/workout-card/workout-card.component';
+import { SomeWorkoutPageComponent } from './pages/users/some-workout-page/some-workout-page.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -69,6 +74,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserActivityAdminComponent,
     UserStatsComponent,
     EmailActivateComponent,
+    UserAllWorkoutsComponent,
+    UserAllWorkoutsPageComponent,
+    NewWorkoutComponent,
+    WorkoutCardComponent,
+    SomeWorkoutPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,31 @@
 <app-loading [loading]="loading"></app-loading>
-<div class="main">
+<div class="main" *ngIf="activities">
   <div class="container">
-    <div >
+    <div>
       <div>
         <div class="d-flex justify-content-center">
           <h1>{{'my_activity' | translate}}</h1>
         </div>
-        <app-activity-card *ngFor="let activity of activities" [activity]="activity"></app-activity-card>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-secondary" routerLink="/user/activities/new">{{'new_activity' | translate}}</a>
+        </div>
+        <hr>
+        <div *ngIf="activities.length > 0">
+          <app-activity-card *ngFor="let activity of activities" [activity]="activity"></app-activity-card>
+        </div>
+        <div *ngIf="activities.length == 0" class="d-flex justify-content-center dont-have-label">
+          <h1>{{'you_dont_have_any_activities_yet' | translate}}</h1>
+        </div>
       </div>
       <hr>
-      <div >
+      <div class="d-flex justify-content-center">
+        <h1>{{'last_trainings' | translate}}</h1>
+      </div>
+      <hr>
+      <div *ngIf="groupedTrainings.length > 0">
         <div>
-          <div class="d-flex justify-content-center">
-            <h1>{{'last_trainings' | translate}}</h1>
-          </div>
+
           <div class="scrolled-table">
             <table class="table table-striped table-bordered">
               <thead>
@@ -30,7 +42,11 @@
                   </h6></td>
               </tr>
               <tr *ngFor="let training of dateTraining.trainings">
-                <td>{{training.activity.name}}</td>
+                <td>{{training.activity.name}}
+                  <svg height="20" width="20" *ngIf="training.mode == 'WORKOUT'">
+                    <text x="0" y="15" fill="black">W</text>
+                  </svg>
+                </td>
                 <td>{{training?.count + ' ' + training.activity.notation}}</td>
                 <td> {{ training.startTime | date: 'HH:mm'}}</td>
               </tr>
@@ -38,6 +54,9 @@
             </table>
           </div>
         </div>
+      </div>
+      <div *ngIf="groupedTrainings.length == 0" class="d-flex justify-content-center dont-have-label">
+        <h1>{{'you_dont_have_any_trainings_yet' | translate}}</h1>
       </div>
     </div>
   </div>

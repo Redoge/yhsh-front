@@ -56,7 +56,6 @@ export class UserService {
   }
 
   getUserByUsername(username: string) {
-    console.log(username + "----")
     return this.httpClient.get(DOMAIN_PATH + '/users/'+username).pipe(
       map((response: any) => {
         const user: User = response;

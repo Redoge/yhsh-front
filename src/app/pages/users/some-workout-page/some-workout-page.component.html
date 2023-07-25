@@ -1,0 +1,34 @@
+<app-loading [loading]="loading"></app-loading>
+<div class="container" *ngIf="workout">
+  <div class="justify-content-center d-flex">
+    <h2>{{workout.name }} - {{workout.startTime | date:'dd.MM.YY'}}</h2>
+  </div>
+  <hr>
+  <div class="container">
+    <br>
+    <table class="table table-striped table-bordered">
+      <thead>
+      <td>{{'name' | translate}}</td>
+      <td>{{'count' | translate}}</td>
+      <td>{{'time' | translate}}</td>
+      <td>{{'remove' | translate}}</td>
+      </thead>
+      <tbody>
+      <tr *ngFor="let training of workout?.trainings">
+        <td>{{training.activity.name}}</td>
+        <td>{{training.count}}</td>
+        <td>{{training.startTime | date: 'HH:mm'}}</td>
+        <td><button (click)="removeTraining(training.id)">{{'remove' | translate}}</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div class="table-bordered d-flex justify-content-center"> <!--//TODO: implement this activity-->
+    <form (ngSubmit)="removeWorkout()">
+      <button type="submit" class="btn btn-secondary">{{'remove_workout' | translate}}</button>
+    </form>
+    <br>
+<!--    <div class="alert alert-danger" role="alert" *ngIf="error" (click)="closeError()">  {{error}}  </div>-->
+  </div>
+</div>

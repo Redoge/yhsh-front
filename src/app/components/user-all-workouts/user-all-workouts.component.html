@@ -1,0 +1,17 @@
+<app-loading [loading]="loading"></app-loading>
+<div class="container" *ngIf="workouts">
+  <div class="d-flex justify-content-center">
+    <h2>{{'all_workout' | translate}}</h2>
+  </div>
+  <hr>
+  <div class="d-flex justify-content-center">
+    <a class="btn btn-secondary" routerLink="/user/workouts/new">{{'new_workouts' | translate}}</a>
+  </div>
+  <hr>
+  <div *ngIf="workouts.length > 0"  class="container">
+    <app-workout-card *ngFor="let workout of workouts" [workout]="workout"></app-workout-card>
+  </div>
+  <div *ngIf="workouts.length == 0" class="justify-content-center d-flex dont-have-label">
+    <h1>{{'you_dont_have_any_workouts_yet' | translate}}</h1>
+  </div>
+</div>

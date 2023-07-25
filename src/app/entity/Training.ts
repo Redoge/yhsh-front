@@ -6,7 +6,7 @@ export interface Training {
    activity: Activity;
    count: number;
    startTime: Date;
-   endTime: Date;
    user: User;
    removed: boolean;
+   mode: string;
 }

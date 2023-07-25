@@ -52,5 +52,24 @@
   "users": "Users",
   "manage": "Manage",
   "manage_users": "Manage users",
-  "password": "Password"
+  "password": "Password",
+  "add_training": "Add training",
+  "select_some_activity": "Select some activity",
+  "select_one_by_list": "Select one by list",
+  "added_training": "Added training",
+  "workout_name": "Workout name",
+  "save_workout": "Save workout",
+  "my_workouts": "My Workouts",
+  "all_workout": "All Workouts",
+  "new_workouts": "New Workouts",
+  "remove_workout": "Remove Workout",
+  "remove": "Remove",
+  "activate_email": "Activate Email",
+  "activate": "Activate",
+  "resend_code": "Resend Code",
+  "enter_the_code": "Enter Code",
+  "you_dont_have_any_workouts_yet": "You don't have any workouts yet",
+  "you_dont_have_any_trainings_yet": "You don't have any trainings yet",
+  "you_dont_have_any_activities_yet": "You don't have any activities yet"
+
 }

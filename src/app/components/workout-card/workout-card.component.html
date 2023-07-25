@@ -1,0 +1,5 @@
+<div class="card  mb-3">
+  <a class="link-secondary" routerLink="/user/workouts/{{workout?.id}}">
+    <div class="card-header">{{workout?.name}} - {{workout?.trainings?.length}} {{'trainings' | translate}} | {{workout?.startTime | date: 'dd/MM/YY HH:mm'}}</div>
+  </a>
+</div>

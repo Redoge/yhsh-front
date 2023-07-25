@@ -18,6 +18,9 @@ import {UserProfilePageComponent} from "./pages/users/user-profile-page/user-pro
 import {UserPageAdminComponent} from "./pages/admin/user-page-admin/user-page-admin.component";
 import {UserActivityAdminComponent} from "./pages/admin/user-activity-admin/user-activity-admin.component";
 import {UserStatsAdminComponent} from "./pages/admin/user-stats-admin/user-stats-admin.component";
+import {UserAllWorkoutsPageComponent} from "./pages/users/user-all-workouts-page/user-all-workouts-page.component";
+import {NewWorkoutComponent} from "./pages/users/new-workout/new-workout.component";
+import {SomeWorkoutPageComponent} from "./pages/users/some-workout-page/some-workout-page.component";
 
 const routes: Routes = [
   {path: '', component: MainComponent},
@@ -29,6 +32,10 @@ const routes: Routes = [
   {path: 'user/activities', component: MyActivityPageComponent, canActivate: [UserGuardService]},
   {path: 'user/activities/new', component: NewActivityComponent, canActivate: [UserGuardService]},
   {path: 'user/activities/:id', component: SomeActivityComponent, canActivate: [UserGuardService]},
+  {path: 'user/workouts', component: UserAllWorkoutsPageComponent, canActivate: [UserGuardService]},
+  {path: 'user/workouts/new', component: NewWorkoutComponent, canActivate: [UserGuardService]},
+  {path: 'user/workouts/:id', component: SomeWorkoutPageComponent, canActivate: [UserGuardService]},
+
 
   {path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuardService]},
   {path: 'admin/users', component: UserTableAdminComponent, canActivate: [AdminGuardService]},

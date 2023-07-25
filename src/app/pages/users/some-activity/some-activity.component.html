@@ -1,5 +1,5 @@
 <app-loading [loading]="loading"></app-loading>
-<div class="container">
+<div class="container" *ngIf="groupedTrainings">
   <div class="d-flex justify-content-center">
     <h1>{{activity?.name}}</h1>
   </div>
@@ -13,7 +13,7 @@
   </form>
   <hr>
   <div class="container">
-    <div class="scrolled-table">
+    <div class="scrolled-table" *ngIf="groupedTrainings.length > 0">
       <table class="table table-striped table-bordered justify-content-center">
         <thead>
         <tr>
@@ -38,7 +38,11 @@
        </tbody>
       </table>
     </div>
+    <div *ngIf="groupedTrainings.length == 0" class="justify-content-center d-flex dont-have-label">
+      <h1>{{'you_dont_have_any_trainings_yet' | translate}}</h1>
+    </div>
   </div>
+  <hr>
   <div class="table-bordered d-flex justify-content-center">
     <form (ngSubmit)="removeActivity()">
       <button type="submit" class="btn btn-secondary">{{'remove_activity' | translate}}</button>
