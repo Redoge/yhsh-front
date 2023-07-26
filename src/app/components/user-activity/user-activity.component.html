@@ -48,7 +48,7 @@
                   </svg>
                 </td>
                 <td>{{training?.count + ' ' + training.activity.notation}}</td>
-                <td> {{ training.startTime | date: 'HH:mm'}}</td>
+                <td> {{ training.startTime | date: 'HH:mm' : 'local'}}</td>
               </tr>
               </tbody>
             </table>

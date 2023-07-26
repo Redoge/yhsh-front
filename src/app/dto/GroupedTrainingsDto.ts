@@ -1,6 +1,6 @@
-import {Training} from "../entity/Training";
+import {TrainingDto} from "./TrainingDto";
 
 export interface GroupedTrainingsDto {
   date: Date;
-  trainings: Training[];
+  trainings: TrainingDto[];
 }

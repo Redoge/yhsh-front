@@ -1,10 +1,9 @@
-import {User} from "./User";
-import {Training} from "./Training";
+import {TrainingDto} from "./TrainingDto";
 
 export interface Workout{
   id:number;
-  trainings: Training[];
-  user: User;
+  trainings: TrainingDto[];
+  userId: number;
   name: string;
   startTime: Date;
   endTime: Date;

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {WorkoutService} from "../../../service/workout/workout.service";
-import {Workout} from "../../../entity/Workout";
+import {Workout} from "../../../dto/Workout";
 import {TrainingService} from "../../../service/training/training.service";
 
 @Component({
@@ -27,19 +27,19 @@ export class SomeWorkoutPageComponent {
     this.workoutService.getWorkoutById(this.id).subscribe(res => {
       this.workout = res;
       this.loading = false;
-    }, err => {
+    }, () => {
       this.router.navigate(["/user/workouts"])
     })
   }
 
   removeWorkout() {
     this.loading = true;
-    this.workoutService.removeWorkoutById(<number>this.workout?.id).subscribe(success => {
+    this.workoutService.removeWorkoutById(<number>this.workout?.id).subscribe(() => {
       this.loading = false;
       this.router.navigate(["/user/workouts"])
-    }, error => {
+    }, () => {
       this.loading = false;
-      this.router.navigate(['/user/workouts']) //TODO: why error if delete
+      this.router.navigate(['/user/workouts'])
     })
   }
 

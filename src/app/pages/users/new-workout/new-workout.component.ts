@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {WorkoutService} from "../../../service/workout/workout.service";
 import {ActivityService} from "../../../service/activity/activity.service";
 import {JwtService} from "../../../service/jwt/jwt.service";
-import {Activity} from "../../../entity/Activity";
+import {ActivityDto} from "../../../dto/ActivityDto";
 import {TrainingIntoWorkoutSaveDto} from "../../../dto/TrainingIntoWorkoutSaveDto";
 import {WorkoutSaveDto} from "../../../dto/WorkoutSaveDto";
 import {Router} from "@angular/router";
@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./new-workout.component.css']
 })
 export class NewWorkoutComponent implements OnInit {
-  protected activities: Activity[] = [];
+  protected activities: ActivityDto[] = [];
   protected workout: WorkoutSaveDto|undefined;
   protected username: string;
   protected activityId: number = 0;
@@ -23,6 +23,7 @@ export class NewWorkoutComponent implements OnInit {
   protected name: String = '';
   protected startTime: Date | undefined;
   protected loading = false;
+  protected error = '';
 
   constructor(private workoutService: WorkoutService, private activityService: ActivityService, private jwtService: JwtService,
               private router: Router) {
@@ -59,7 +60,7 @@ export class NewWorkoutComponent implements OnInit {
   }
 
   saveWorkout() {
-    if (this.name.length > 3 && this.trainings.length > 0) {
+    if (this.name.length > 0 && this.trainings.length > 0) {
       this.workout = {
         trainings: this.trainings,
         username: this.username,
@@ -68,13 +69,18 @@ export class NewWorkoutComponent implements OnInit {
         endTime: new Date()
       }
       this.loading = true;
-      this.workoutService.saveWorkout(this.workout).subscribe(workout=>{
+      this.workoutService.saveWorkout(this.workout).subscribe(()=>{
         this.loading = false;
         this.router.navigate(['/user/workouts'])
       }, ()=>{
         this.loading = false;
       })
+    }else{
+      this.error = "Name and trainings list can't be empty!!"
     }
   }
 
+  closeError() {
+    this.error = ''
+  }
 }

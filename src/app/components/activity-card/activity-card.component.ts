@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Activity} from "../../entity/Activity";
+import {ActivityDto} from "../../dto/ActivityDto";
 
 @Component({
   selector: 'app-activity-card',
@@ -7,5 +7,5 @@ import {Activity} from "../../entity/Activity";
   styleUrls: ['./activity-card.component.css']
 })
 export class ActivityCardComponent {
-  @Input() activity: Activity | null = null;
+  @Input() activity: ActivityDto | null = null;
 }

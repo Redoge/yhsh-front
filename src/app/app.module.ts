@@ -20,7 +20,6 @@ import { StatsBlockComponent } from './components/stats-block/stats-block.compon
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './components/loading/loading.component';
-import { ActivityTrainingTableComponent } from './components/activity-training-table/activity-training-table.component';
 import {AuthInterceptor} from "./service/Interceptor/auth.interceptor";
 import { AdminPanelComponent } from './pages/admin/admin-panel/admin-panel.component';
 import { UserTableAdminComponent } from './pages/admin/user-administation/user-table-admin.component';
@@ -61,7 +60,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     TrainingInActivityComponent,
     StatsBlockComponent,
     LoadingComponent,
-    ActivityTrainingTableComponent,
     AdminPanelComponent,
     UserTableAdminComponent,
     UserProfilePageComponent,

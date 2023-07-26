@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {NavbarUpdateListenerService} from 'src/app/service/navbar/navbar-update-listener.service';
-import {UserRole} from "../../entity/UserRole";
+import {UserRole} from "../../dto/UserRole";
 import {JwtService} from "../../service/jwt/jwt.service";
 
 @Component({

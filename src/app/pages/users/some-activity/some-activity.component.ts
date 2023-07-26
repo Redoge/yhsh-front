@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivityService} from 'src/app/service/activity/activity.service';
-import {Activity} from "../../../entity/Activity";
+import {ActivityDto} from "../../../dto/ActivityDto";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TrainingService} from 'src/app/service/training/training.service';
 import {Title} from "@angular/platform-browser";
 import {GroupedTrainingsDto} from "../../../dto/GroupedTrainingsDto";
 import {TrainingGrouperService} from "../../../service/util/grouper/training/training-grouper.service";
+import {TrainingDto} from "../../../dto/TrainingDto";
 
 @Component({
   selector: 'app-some-activity',
@@ -13,11 +14,12 @@ import {TrainingGrouperService} from "../../../service/util/grouper/training/tra
   styleUrls: ['./some-activity.component.css']
 })
 export class SomeActivityComponent implements OnInit {
-  protected activity: Activity | undefined;
+  protected activity: ActivityDto | undefined;
   protected id: number;
   protected count: number = 0;
   protected loading: boolean = false;
   protected groupedTrainings: GroupedTrainingsDto[] | undefined;
+  private trainings: TrainingDto[] | undefined;
   protected error: string = '';
 
 
@@ -29,29 +31,28 @@ export class SomeActivityComponent implements OnInit {
 
   removeActivity() {
     this.loading = true;
-    this.activityService.removeActivityById(this.id).subscribe(removed=>{
+    this.activityService.removeActivityById(this.id).subscribe(()=>{
       this.loading = false;
       this.router.navigate(['/user/activities'])
-    }, error => {
+    }, () => {
       this.error = "Something went wrong...";
     })
   }
 
   add() {
     this.loading = true
-    this.trainingService.saveTraining(this.activity?.id, this.count).subscribe(training => {
-      this.updateActivity()
+    this.trainingService.saveTraining(this.activity?.id, this.count).subscribe(() => {
+      this.updateTrainings()
       this.loading = false
-    }, err => {
+    }, () => {
       this.loading = false
     })
   }
-  updateActivity() {
+  getActivity() {
     this.loading = true;
     this.activityService.getActivityById(this.id).subscribe(activity => {
       this.activity = activity;
-      this.groupedTrainings = this.trainingGrouper.groupByDate(activity.trainings)
-    }, err => {
+    }, () => {
       this.loading = false;
       this.router.navigate([''])
     }, () => {
@@ -60,19 +61,30 @@ export class SomeActivityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updateActivity()
+    this.updateTrainings()
+    this.getActivity()
   }
   remove(trainingId: number) {
     this.loading = true;
-    this.trainingService.removeTrainingById(trainingId).subscribe(isDeleted => {
-      this.updateActivity();
+    this.trainingService.removeTrainingById(trainingId).subscribe(() => {
+      this.updateTrainings();
       this.loading = false;
-    }, error => {
+    }, () => {
       this.loading = false;
     });
   }
 
   closeError() {
     this.error = ''
+  }
+
+  private updateTrainings() {
+    this.trainingService.getTrainingsByActivityId(this.id).subscribe(res=>{
+      this.trainings = res;
+      this.groupedTrainings = this.trainingGrouper.groupByDate(<TrainingDto[]>this.trainings)
+    }, error=>{
+      console.log(error)
+      this.error = 'Something went wrong';
+    })
   }
 }

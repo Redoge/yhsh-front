@@ -50,4 +50,7 @@
       <input class="btn btn-secondary" (click)="saveWorkout()" value="{{'save_workout' | translate}}">
     </div>
   </div>
+  <br>
+  <div class="alert alert-danger" role="alert" *ngIf="error" (click)="closeError()">  {{error}}  </div>
+
 </div>

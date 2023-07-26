@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Training} from "../../../../entity/Training";
+import {TrainingDto} from "../../../../dto/TrainingDto";
 import {GroupedTrainingsDto} from "../../../../dto/GroupedTrainingsDto";
 
 @Injectable({
@@ -9,11 +9,10 @@ export class TrainingGrouperService {
 
   constructor() { }
 
-  public groupByDate(trainings :Training[]){
+  public groupByDate(trainings :TrainingDto[]){
     const groupedTrainings: GroupedTrainingsDto[] = [];
     trainings.forEach(training => {
       const existingGroup = groupedTrainings.find(group =>
-
         new Date(group.date).toDateString() === new Date(training.startTime).toDateString());
       if (existingGroup) {
         existingGroup.trainings.push(training);

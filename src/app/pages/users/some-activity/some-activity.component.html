@@ -1,10 +1,10 @@
 <app-loading [loading]="loading"></app-loading>
-<div class="container" *ngIf="groupedTrainings">
+<div class="container" *ngIf="groupedTrainings && activity">
   <div class="d-flex justify-content-center">
-    <h1>{{activity?.name}}</h1>
+    <h1>{{activity.name}}</h1>
   </div>
   <form (ngSubmit)="add()">
-    <label for="name">{{'count' | translate}}:</label>
+    <label for="name">{{'count' | translate}}: [ {{activity.notation}} ]</label>
     <input class="form-control" type="number" id="name" min="1" [(ngModel)]="count"
            name="count"><br/>
     <div class=" d-flex justify-content-center">
@@ -26,7 +26,7 @@
           <td class="bg-body-secondary" colspan="3" ><h6>{{ dateTraining.date | date:'dd' }} {{ (dateTraining.date | date:'MMMM') || '' | translate }} {{ dateTraining.date | date:'yyyy' }}</h6></td>
         </tr>
        <tr *ngFor="let training of dateTraining.trainings">
-         <td>{{training?.count + ' ' + activity?.notation}}</td>
+         <td>{{training.count + ' ' + activity.notation}}</td>
          <td> {{ training.startTime | date: 'HH:mm'  }}</td>
          <td>
            <img  (click)="remove(training.id)"

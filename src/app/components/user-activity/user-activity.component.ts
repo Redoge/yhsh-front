@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {Activity} from "../../entity/Activity";
+import {ActivityDto} from "../../dto/ActivityDto";
 import {GroupedTrainingsDto} from "../../dto/GroupedTrainingsDto";
 import {ActivityService} from "../../service/activity/activity.service";
 import {TrainingService} from "../../service/training/training.service";
@@ -12,7 +12,7 @@ import {TrainingGrouperService} from "../../service/util/grouper/training/traini
 })
 export class UserActivityComponent implements OnChanges {
   @Input() username: string = '';
-  protected activities: Activity[] | undefined;
+  protected activities: ActivityDto[] | undefined;
   protected errors: string = '';
   protected loading: boolean = false;
   groupedTrainings: GroupedTrainingsDto[] = [];
@@ -42,7 +42,7 @@ export class UserActivityComponent implements OnChanges {
     this.trainingService.getTrainingsByUserUsername(this.username).subscribe(res=>{
       this.groupedTrainings = this.trainingGrouper.groupByDate(res)
       this.loading = false;
-    }, err => {
+    }, () => {
       this.loading = false;
     })
   }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import jwt_decode from 'jwt-decode';
-import {UserRole} from "../../entity/UserRole";
+import {UserRole} from "../../dto/UserRole";
 import {TOKEN_NAME} from "../../util/consts";
 
 @Injectable({

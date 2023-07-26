@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { UserService } from 'src/app/service/user/user.service';
-import { User } from "../../entity/User";
+import { UserDto } from "../../dto/UserDto";
 
 @Component({
   selector: 'app-main-user',
@@ -9,7 +9,7 @@ import { User } from "../../entity/User";
 })
 export class UserProfileComponent implements OnChanges {
   @Input() username: string = '';
-  protected user: User|null = null;
+  protected user: UserDto|null = null;
   protected error: string = '';
   protected heightSm: number = 0;
   protected weightKg: number = 0 ;
@@ -52,7 +52,7 @@ export class UserProfileComponent implements OnChanges {
       }
     );
   }
-  private mapFieldByUserResponse(user: User){
+  private mapFieldByUserResponse(user: UserDto){
     this.user = user;
     this.heightSm = user.heightSm;
     this.weightKg = user.weightKg;

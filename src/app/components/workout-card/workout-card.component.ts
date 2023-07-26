@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Workout} from "../../entity/Workout";
+import {Workout} from "../../dto/Workout";
 
 @Component({
   selector: 'app-workout-card',

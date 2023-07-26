@@ -1,6 +1,6 @@
 import {Component, Input, SimpleChanges} from '@angular/core';
 import {WorkoutService} from "../../service/workout/workout.service";
-import {Workout} from "../../entity/Workout";
+import {Workout} from "../../dto/Workout";
 
 @Component({
   selector: 'app-user-all-workouts',
@@ -26,7 +26,7 @@ export class UserAllWorkoutsComponent {
     this.workoutService.getAllWorkoutsByUsername(this.username).subscribe((response) => {
       this.workouts = response;
       this.loading = false;
-    }, err=>{
+    }, ()=>{
       this.loading = false;
     });
   }

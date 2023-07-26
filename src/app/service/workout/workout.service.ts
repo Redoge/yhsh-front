@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DOMAIN_PATH} from "../../util/consts";
 import {map} from "rxjs";
-import {Workout} from "../../entity/Workout";
+import {Workout} from "../../dto/Workout";
 import {WorkoutSaveDto} from "../../dto/WorkoutSaveDto";
 
 @Injectable({

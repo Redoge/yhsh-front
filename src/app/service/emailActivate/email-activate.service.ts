@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {DOMAIN_PATH} from "../../util/consts";
 import {map} from "rxjs";
-import {Training} from "../../entity/Training";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

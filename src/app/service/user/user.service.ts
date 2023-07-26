@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {DOMAIN_PATH} from "../../util/consts";
 import {map} from "rxjs";
 import {JwtService} from "../jwt/jwt.service";
-import {User} from "../../entity/User";
+import {UserDto} from "../../dto/UserDto";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class UserService {
     let username = this.jwtService.getUsername();
     return this.httpClient.get(DOMAIN_PATH + '/users/'+username).pipe(
       map((response: any) => {
-        const user: User = response
+        const user: UserDto = response
         return user;
       })
     );
@@ -24,7 +24,7 @@ export class UserService {
   updateUser(username: string, heightSm: number, weightKg: number, sex: string) {
     return this.httpClient.post(DOMAIN_PATH + '/users', { username,heightSm, weightKg, sex }).pipe(
       map((response: any) => {
-        const user: User = response;
+        const user: UserDto = response;
         return user;
       })
     );
@@ -33,7 +33,7 @@ export class UserService {
   getAll() {
     return this.httpClient.get(DOMAIN_PATH + '/users').pipe(
       map((response: any) => {
-        const users: User[] = response;
+        const users: UserDto[] = response;
         return users;
       })
     );
@@ -58,7 +58,7 @@ export class UserService {
   getUserByUsername(username: string) {
     return this.httpClient.get(DOMAIN_PATH + '/users/'+username).pipe(
       map((response: any) => {
-        const user: User = response;
+        const user: UserDto = response;
         return user;
       })
     );

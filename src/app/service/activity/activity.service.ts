@@ -2,21 +2,19 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DOMAIN_PATH} from "../../util/consts";
 import {map} from "rxjs";
-import {JwtService} from "../jwt/jwt.service";
-import {Activity} from "../../entity/Activity";
-import {AuthenticationResponseDto} from "../../dto/AuthenticationResponseDto";
+import {ActivityDto} from "../../dto/ActivityDto";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActivityService {
 
-  constructor(private httpClient: HttpClient, private jwtService: JwtService) { }
+  constructor(private httpClient: HttpClient) { }
 
   getActivitiesByUserUsername(username: string) {
     return this.httpClient.get(DOMAIN_PATH + '/activities?username=' + username).pipe(
       map((response: any) => {
-        const activities: Activity[] = response
+        const activities: ActivityDto[] = response
         return activities;
       })
     );
@@ -24,7 +22,7 @@ export class ActivityService {
   createActivity(name: string, notation: string, username: string) {
     return this.httpClient.post(DOMAIN_PATH + '/activities', { name, notation, username }).pipe(
       map((response: any) => {
-        const activity: Activity = response
+        const activity: ActivityDto = response
         return activity;
       })
     );
@@ -33,7 +31,7 @@ export class ActivityService {
   getActivityById(id: number) {
     return this.httpClient.get(DOMAIN_PATH + '/activities/'+id).pipe(
       map((response: any) => {
-        const activity: Activity = response
+        const activity: ActivityDto = response
         return activity;
       })
     );

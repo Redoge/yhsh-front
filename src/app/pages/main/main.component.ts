@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {JwtService} from "../../service/jwt/jwt.service";
-import {UserRole} from "../../entity/UserRole";
+import {UserRole} from "../../dto/UserRole";
 
 @Component({
   selector: 'app-main',
