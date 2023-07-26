@@ -32,6 +32,45 @@
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.js"]
           },
           "configurations": {
+            "prod": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20kb",
+                  "maximumError": "40kb"
+                }
+              ],
+              "outputHashing": "all",
+              "outputPath": "dist/yhsh-front",
+              "optimization": true,
+              "aot": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/app/environments/environment.ts",
+                  "with": "src/app/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "dev": {
+              "outputPath": "dist/yhsh-front-dev",
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/app/environments/environment.ts",
+                  "with": "src/app/environments/environment.dev.ts"
+                }
+              ]
+            },
             "production": {
               "budgets": [
                 {
@@ -66,9 +105,15 @@
             },
             "development": {
               "browserTarget": "yhsh-front:build:development"
+            },
+            "prod": {
+              "browserTarget": "yhsh-front:build:prod"
+            },
+            "dev": {
+              "browserTarget": "yhsh-front:build:dev"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "dev"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

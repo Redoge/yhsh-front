@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DOMAIN_PATH} from "../../util/consts";
+import {DOMAIN_PATH} from "../../environments/environment";
 import {map} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 

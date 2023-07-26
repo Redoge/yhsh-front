@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {JwtService} from "../jwt/jwt.service";
 import {map} from "rxjs";
 import {UserActivityStatsDto} from "../../dto/UserActivityStatsDto";
-import {DOMAIN_PATH} from "../../util/consts";
+import {DOMAIN_PATH} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

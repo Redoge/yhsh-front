@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import jwt_decode from 'jwt-decode';
 import {UserRole} from "../../dto/UserRole";
-import {TOKEN_NAME} from "../../util/consts";
+import {TOKEN_NAME} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

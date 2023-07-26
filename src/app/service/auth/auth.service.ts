@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {DOMAIN_PATH} from "../../util/consts";
+import {DOMAIN_PATH} from "../../environments/environment";
 import {AuthenticationResponseDto} from "../../dto/AuthenticationResponseDto";
 import {map, Observable, tap} from "rxjs";
 

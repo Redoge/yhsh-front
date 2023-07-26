@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {DOMAIN_PATH} from "../../util/consts";
+import {DOMAIN_PATH} from "../../environments/environment";
 import {map} from "rxjs";
 import {JwtService} from "../jwt/jwt.service";
 import {TrainingDto} from "../../dto/TrainingDto";
