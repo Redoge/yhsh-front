@@ -44,6 +44,7 @@ import { SomeWorkoutPageComponent } from './pages/users/some-workout-page/some-w
 import { FriendsListComponent } from './components/friends-list/friends-list.component';
 import { FriendsPageComponent } from './pages/users/friends-page/friends-page.component';
 import { FriendUserPageComponent } from './pages/users/friend-user-page/friend-user-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -83,6 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FriendsListComponent,
     FriendsPageComponent,
     FriendUserPageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
