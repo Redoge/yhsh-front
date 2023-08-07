@@ -18,7 +18,7 @@
   </div>
   <hr>
   <div class="row row-cols-1 row-cols-md-4 g-4" *ngIf="stats.length > 0">
-    <app-stats-block *ngFor="let stat of stats" [stat]="stat"></app-stats-block>
+    <app-stats-block *ngFor="let stat of stats" [stat]="stat" class="d-flex justify-content-center"></app-stats-block>
   </div>
   <hr>
   <div *ngIf="stats.length == 0" class="justify-content-center d-flex dont-have-label">
