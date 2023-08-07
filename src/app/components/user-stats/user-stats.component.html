@@ -3,6 +3,20 @@
   <div class="d-flex justify-content-center">
     <h1>{{'stats' | translate}}</h1>
   </div>
+  <div class="container d-flex justify-content-center">
+    <form class="row g-2" (submit)="filter()">
+      <div class="col-6">
+        <label for="startDate" class="col-form-label">{{'start'|translate}}:</label>
+        <input type="date" [(ngModel)]="startDate" id="startDate" name="startDate" class="form-control" min="2023-01-01" max="{{todayDate}}" required>
+      </div>
+      <div class="col-6">
+        <label for="endDate" class="col-form-label">{{'end'|translate}}:</label>
+        <input type="date" id="endDate" [(ngModel)]="endDate"  name="endDate" class="form-control"  min="2023-01-01" max="{{todayDate}}" required>
+      </div>
+        <input type="submit" class="btn btn-secondary" value="{{'filter'|translate}}">
+    </form>
+  </div>
+  <hr>
   <div class="row row-cols-1 row-cols-md-4 g-4" *ngIf="stats.length > 0">
     <app-stats-block *ngFor="let stat of stats" [stat]="stat"></app-stats-block>
   </div>

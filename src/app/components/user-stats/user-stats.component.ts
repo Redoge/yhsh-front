@@ -11,9 +11,12 @@ export class UserStatsComponent implements OnChanges{
   @Input() username: string = '';
   protected stats: UserActivityStatsDto[] = []; //TODO
   protected loading: boolean = false;
+  protected todayDate;
+  protected startDate: Date|undefined;
+  protected endDate: Date|undefined;
 
   constructor(private statsService: StatsService) {
-
+    this.todayDate = new Date().toISOString().split("T")[0];
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -34,4 +37,15 @@ export class UserStatsComponent implements OnChanges{
       })
   }
 
+  filter(){
+    this.loading = true;
+    this.statsService.getStatsByUsernameAndFilter(this.username, this.startDate, this.endDate).subscribe(stats => {
+        this.stats = stats;
+      }, err => {
+        this.loading = false;
+      }
+      , () => {
+        this.loading = false;
+      })
+  }
 }

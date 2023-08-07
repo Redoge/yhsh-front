@@ -77,6 +77,8 @@
   "add_friend": "Add Friend",
   "friends": "Friends",
   "enter_friends_username": "Enter friends username",
-  "sent_request": "Sent request"
+  "sent_request": "Sent request",
+  "start": "Start",
+  "end": "End"
 
 }
