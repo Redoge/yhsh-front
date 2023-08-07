@@ -21,6 +21,8 @@ import {UserStatsAdminComponent} from "./pages/admin/user-stats-admin/user-stats
 import {UserAllWorkoutsPageComponent} from "./pages/users/user-all-workouts-page/user-all-workouts-page.component";
 import {NewWorkoutComponent} from "./pages/users/new-workout/new-workout.component";
 import {SomeWorkoutPageComponent} from "./pages/users/some-workout-page/some-workout-page.component";
+import {FriendsPageComponent} from "./pages/users/friends-page/friends-page.component";
+import {FriendUserPageComponent} from "./pages/users/friend-user-page/friend-user-page.component";
 
 const routes: Routes = [
   {path: '', component: MainComponent},
@@ -35,6 +37,10 @@ const routes: Routes = [
   {path: 'user/workouts', component: UserAllWorkoutsPageComponent, canActivate: [UserGuardService]},
   {path: 'user/workouts/new', component: NewWorkoutComponent, canActivate: [UserGuardService]},
   {path: 'user/workouts/:id', component: SomeWorkoutPageComponent, canActivate: [UserGuardService]},
+  {path: 'user/:username/friends', component: FriendsPageComponent, canActivate: [UserGuardService]},
+
+
+  {path: 'friends/:username', component: FriendUserPageComponent, canActivate: [UserGuardService]},
 
 
   {path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuardService]},

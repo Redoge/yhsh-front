@@ -70,5 +70,12 @@
   "enter_the_code": "Введіть код",
   "you_dont_have_any_workouts_yet": "У Вас ще немає жодного Workout",
   "you_dont_have_any_trainings_yet": "У Вас ще немає жодного тренування",
-  "you_dont_have_any_activities_yet": "У Вас ще немає жодної активності"
+  "you_dont_have_any_activities_yet": "У Вас ще немає жодної активності",
+  "you_dont_have_any_friends_yet": "У Вас ще немає жодного друга",
+  "friend_requests": "Запити в друзі",
+  "confirm": "Підтвердити",
+  "add_friend": "Додати друга",
+  "friends": "Друзі",
+  "enter_friends_username": "Введіть username друга",
+  "sent_request": "Відправити запит"
 }

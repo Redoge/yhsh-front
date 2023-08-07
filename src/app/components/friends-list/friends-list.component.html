@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="card  mb-3">
+    <a class="link-secondary" *ngFor="let user of friends">
+      <div class="card-header"><a routerLink="/friends/{{user.username}}">{{user.username}}</a> <button class="btn btn-sm" (click)="removeFriend(user.username)">{{'remove'|translate}}</button></div>
+    </a>
+  </div>
+
+</div>

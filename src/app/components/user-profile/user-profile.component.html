@@ -20,6 +20,11 @@
             {{'bmi' | translate}}: {{bmi | number:'1.2-2'}}
           </a>
         </li>
+        <li class="list-group-item" ><a routerLink="/user/{{username}}/friends" class="link-secondary">{{'friends' | translate}}</a>
+          <span *ngIf="friendRequestCount>0">
+            ({{friendRequestCount}})
+          </span>
+        </li>
       </ul>
     </div>
   </div>

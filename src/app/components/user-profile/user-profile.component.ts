@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { UserService } from 'src/app/service/user/user.service';
 import { UserDto } from "../../dto/UserDto";
+import {FriendsService} from "../../service/friends/friends.service";
 
 @Component({
   selector: 'app-main-user',
@@ -16,13 +17,15 @@ export class UserProfileComponent implements OnChanges {
   protected sex: string = '';
   protected bmi: number = 0;
   protected loading = true;
+  protected friendRequestCount = 0;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private friendService: FriendsService) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['username'] && changes['username'].currentValue) {
       this.getUserByUsername();
+      this.getFriendsRequestByUsername();
     }
   }
 
@@ -61,4 +64,10 @@ export class UserProfileComponent implements OnChanges {
   }
 
   protected readonly Boolean = Boolean;
+
+  private getFriendsRequestByUsername() {
+    this.friendService.getAllFriendsRequestsByUsername(this.username).subscribe(res=>{
+      this.friendRequestCount = res.length;
+    })
+  }
 }

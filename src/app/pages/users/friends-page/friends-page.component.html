@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="container" *ngIf="friendsRequests.length>0">
+    <div class="justify-content-center d-flex">
+      <h2>{{'friend_requests'|translate}}</h2>
+    </div>
+    <div class="card  mb-3">
+      <span class="link-secondary" *ngFor="let requests of friendsRequests">
+        <div class="card-header">{{requests?.sender?.username}}&nbsp;&nbsp;&nbsp;
+          <button (click)="confirm(requests?.sender?.username)" class="btn btn-sm btn-success">{{'confirm'|translate}}</button> |||
+          <button (click)="discard(requests?.sender?.username)" class="btn btn-sm btn-danger">{{'remove'|translate}}</button>
+        </div>
+      </span>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="justify-content-center d-flex">
+      <h2>{{'friends'|translate}}</h2>
+    </div>
+    <div *ngIf="friends.length>0">
+      <app-friends-list [friends]="friends"></app-friends-list>
+    </div>
+    <div *ngIf="friends.length==0" class="d-flex justify-content-center dont-have-label">
+      <h2>{{'you_dont_have_any_friends_yet' |translate}}</h2>
+    </div>
+  </div>
+
+  <br>
+  <hr>
+  <br>
+  <div class='container'>
+    <div class="justify-content-center d-flex">
+      <h2>{{'add_friend'|translate}}</h2>
+    </div>
+    <form (ngSubmit)="sendFriendRequestForm()">
+      <input class="form-control" type="text" [(ngModel)]="friendUsername" id="friendUsername" name="friendUsername"
+             placeholder="{{'enter_friends_username'|translate}}..." required/>
+      <br>
+      <div class="justify-content-center d-flex">
+        <input class="btn btn-secondary" value="{{'sent_request'|translate}}" type="submit">
+      </div>
+    </form>
+    <br>
+    <div class="alert alert-danger" role="alert" *ngIf="error" (click)="error = ''">  {{error}}  </div>
+    <div class="alert alert-success" role="alert" *ngIf="success" (click)="success = ''">  {{success}}  </div>
+  </div>
+</div>

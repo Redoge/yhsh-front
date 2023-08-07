@@ -41,6 +41,9 @@ import { UserAllWorkoutsPageComponent } from './pages/users/user-all-workouts-pa
 import { NewWorkoutComponent } from './pages/users/new-workout/new-workout.component';
 import { WorkoutCardComponent } from './components/workout-card/workout-card.component';
 import { SomeWorkoutPageComponent } from './pages/users/some-workout-page/some-workout-page.component';
+import { FriendsListComponent } from './components/friends-list/friends-list.component';
+import { FriendsPageComponent } from './pages/users/friends-page/friends-page.component';
+import { FriendUserPageComponent } from './pages/users/friend-user-page/friend-user-page.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -77,6 +80,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     NewWorkoutComponent,
     WorkoutCardComponent,
     SomeWorkoutPageComponent,
+    FriendsListComponent,
+    FriendsPageComponent,
+    FriendUserPageComponent,
   ],
   imports: [
     BrowserModule,

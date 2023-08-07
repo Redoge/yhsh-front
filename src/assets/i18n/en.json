@@ -70,6 +70,13 @@
   "enter_the_code": "Enter Code",
   "you_dont_have_any_workouts_yet": "You don't have any workouts yet",
   "you_dont_have_any_trainings_yet": "You don't have any trainings yet",
-  "you_dont_have_any_activities_yet": "You don't have any activities yet"
+  "you_dont_have_any_activities_yet": "You don't have any activities yet",
+  "you_dont_have_any_friends_yet": "You don't have any friends yet",
+  "friend_requests": "Friend requests",
+  "confirm": "Confirm",
+  "add_friend": "Add Friend",
+  "friends": "Friends",
+  "enter_friends_username": "Enter friends username",
+  "sent_request": "Sent request"
 
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
 import {JwtService} from "../../jwt/jwt.service";
 import {UserRole} from "../../../dto/UserRole";
+import {FriendsService} from "../../friends/friends.service";
 
 @Injectable({
   providedIn: 'root'
