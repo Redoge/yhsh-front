@@ -45,6 +45,7 @@ import { FriendsListComponent } from './components/friends-list/friends-list.com
 import { FriendsPageComponent } from './pages/users/friends-page/friends-page.component';
 import { FriendUserPageComponent } from './pages/users/friend-user-page/friend-user-page.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ActivationEmailComponentComponent } from './components/activation-email-component/activation-email-component.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -85,6 +86,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FriendsPageComponent,
     FriendUserPageComponent,
     FooterComponent,
+    ActivationEmailComponentComponent,
   ],
   imports: [
     BrowserModule,

@@ -23,9 +23,13 @@ import {NewWorkoutComponent} from "./pages/users/new-workout/new-workout.compone
 import {SomeWorkoutPageComponent} from "./pages/users/some-workout-page/some-workout-page.component";
 import {FriendsPageComponent} from "./pages/users/friends-page/friends-page.component";
 import {FriendUserPageComponent} from "./pages/users/friend-user-page/friend-user-page.component";
+import {
+  ActivationEmailComponentComponent
+} from "./components/activation-email-component/activation-email-component.component";
 
 const routes: Routes = [
   {path: '', component: MainComponent},
+  {path: 'email/activation', component: ActivationEmailComponentComponent},
   {path: 'login', component: LoginComponent, canActivate: [UnauthorizedGuardService]},
   {path: 'register', component: RegisterComponent, canActivate: [UnauthorizedGuardService]},
 
