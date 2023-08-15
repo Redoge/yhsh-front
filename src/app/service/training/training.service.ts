@@ -4,6 +4,7 @@ import {DOMAIN_PATH} from "../../environments/environment";
 import {map} from "rxjs";
 import {JwtService} from "../jwt/jwt.service";
 import {TrainingDto} from "../../dto/TrainingDto";
+import {Page} from "../../dto/Page";
 
 @Injectable({
   providedIn: 'root'
@@ -22,18 +23,18 @@ export class TrainingService {
       })
     );
   }
-  getTrainingsByUserUsername(username:string){
-    return this.httpClient.get(DOMAIN_PATH + '/trainings?username='+username).pipe( //TODO
+  getTrainingsByUserUsername(username:string, page:number) {
+    return this.httpClient.get(DOMAIN_PATH + '/trainings?username='+username + '&page='+page).pipe( //TODO
       map((response: any) => {
-        const training: TrainingDto[] = response;
+        const training: Page<TrainingDto> = response;
         return training;
       })
     );
   }
-  public getTrainingsByActivityId(activityId: number) {
-    return this.httpClient.get(DOMAIN_PATH + '/trainings?activityId='+activityId).pipe(
+  public getTrainingsByActivityId(activityId: number, page: number) {
+    return this.httpClient.get(DOMAIN_PATH + '/trainings?activityId='+activityId + '&page='+page).pipe(
       map((response: any) => {
-        const training: TrainingDto[] = response;
+        const training: Page<TrainingDto> = response;
         return training;
       })
     );

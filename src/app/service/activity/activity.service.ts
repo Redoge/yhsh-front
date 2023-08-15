@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {DOMAIN_PATH} from "../../environments/environment";
 import {map} from "rxjs";
 import {ActivityDto} from "../../dto/ActivityDto";
+import {Page} from "../../dto/Page";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ActivityService {
   getActivitiesByUserUsername(username: string) {
     return this.httpClient.get(DOMAIN_PATH + '/activities?username=' + username).pipe(
       map((response: any) => {
-        const activities: ActivityDto[] = response
+        const activities: Page<ActivityDto> = response
         return activities;
       })
     );

@@ -5,6 +5,7 @@ import {map} from "rxjs";
 import {UserDto} from "../../dto/UserDto";
 import {FriendRequestDto} from "../../dto/FriendRequestDto";
 import {FriendshipDto} from "../../dto/FriendshipDto";
+import {Page} from "../../dto/Page";
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class FriendsService {
   public getAllFriendsByUsername(username: string){
     return this.httpClient.get(DOMAIN_PATH + '/users/'+username+"/friends").pipe(
       map((response: any) => {
-        const friends: UserDto[] = response;
+        const friends: Page<UserDto> = response;
         return friends;
       })
     );

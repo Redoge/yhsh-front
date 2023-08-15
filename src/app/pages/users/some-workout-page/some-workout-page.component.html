@@ -18,7 +18,7 @@
         <td>{{training.activity.name}}</td>
         <td>{{training.count}}</td>
         <td>{{training.startTime | date: 'HH:mm'}}</td>
-        <td><button (click)="removeTraining(training.id)">{{'remove' | translate}}</button></td>
+        <td><button class="btn btn-sm btn-secondary" (click)="removeTraining(training.id)">{{'remove' | translate}}</button></td>
       </tr>
       </tbody>
     </table>

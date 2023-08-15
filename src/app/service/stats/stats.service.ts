@@ -4,18 +4,19 @@ import {JwtService} from "../jwt/jwt.service";
 import {map} from "rxjs";
 import {UserActivityStatsDto} from "../../dto/UserActivityStatsDto";
 import {DOMAIN_PATH} from "../../environments/environment";
+import {Page} from "../../dto/Page";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatsService {
 
-  constructor(private httpClient: HttpClient, private jwtService:JwtService) { }
+  constructor(private httpClient: HttpClient) { }
 
   getStatsByUsername(username: string) {
     return this.httpClient.get(DOMAIN_PATH + '/users/'+username+'/stats').pipe(
       map((response: any) => {
-        const stats: UserActivityStatsDto[] = response
+        const stats: Page<UserActivityStatsDto> = response
         return stats;
       })
     );
@@ -29,7 +30,7 @@ export class StatsService {
     console.log(start, end)
     return this.httpClient.get(DOMAIN_PATH + '/users/'+username+'/stats?start='+start+'&end='+end).pipe(
       map((response: any) => {
-        const stats: UserActivityStatsDto[] = response
+        const stats: Page<UserActivityStatsDto> = response
         return stats;
       })
     );

@@ -34,7 +34,7 @@ export class NewWorkoutComponent implements OnInit {
     this.loading = true;
     this.activityService.getActivitiesByUserUsername(this.username).subscribe(activities => {
       this.loading = false;
-      this.activities = activities;
+      this.activities = activities.content;
     }, ()=>{
       this.loading = false;
     })

@@ -20,7 +20,7 @@ export class FriendUserPageComponent {
 
   private checkFriendAccess(username: string) {
     this.friendService.getAllFriendsByUsername(this.jwtService.getUsername()).subscribe(res=>{
-      if(res.filter(f=>f.username.toLowerCase() == username.toLowerCase()).length == 0){
+      if(res.content.filter(f=>f.username.toLowerCase() == username.toLowerCase()).length == 0){
         this.router.navigate(['/'])
       }
     })

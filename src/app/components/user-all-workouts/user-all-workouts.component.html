@@ -14,4 +14,6 @@
   <div *ngIf="workouts.length == 0" class="justify-content-center d-flex dont-have-label">
     <h1>{{'you_dont_have_any_workouts_yet' | translate}}</h1>
   </div>
+  <app-pagination-nav-component [page]="page"></app-pagination-nav-component>
+
 </div>

@@ -1,0 +1,24 @@
+<nav class="d-flex justify-content-center">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link text-secondary disabled"  aria-label="Previous" *ngIf="activePage<=1" (click)="setCurrentPage(activePage-1)">
+        <span aria-hidden="true"  >&laquo;</span>
+      </a>
+      <a class="page-link text-secondary"  aria-label="Previous" *ngIf="activePage>1" (click)="setCurrentPage(activePage-1)">
+        <span aria-hidden="true" >&laquo;</span>
+      </a>
+    </li>
+    <li *ngFor="let num of pagesSet" class="page-item" (click)="setCurrentPage(num)">
+      <a class="page-link text-secondary disabled" *ngIf="activePage==num">{{num}}</a>
+      <a class="page-link text-secondary" *ngIf="activePage!=num">{{num}}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link text-secondary disabled" aria-label="Next" *ngIf="pageCount-activePage==0" (click)="setCurrentPage(activePage+1)">
+        <span aria-hidden="true" >&raquo;</span>
+      </a>
+      <a class="page-link text-secondary" aria-label="Next" *ngIf="pageCount-activePage!=0" (click)="setCurrentPage(activePage+1)">
+        <span aria-hidden="true" >&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

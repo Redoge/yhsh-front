@@ -54,7 +54,7 @@ export class FriendsPageComponent {
         senderUsername: friendUsername,
         recipientUsername: this.username
       }
-      this.friendService.removeFriendsRequest(dto).subscribe(success => {
+      this.friendService.removeFriendsRequest(dto).subscribe(() => {
           this.getFriendsRequests()
         },
         () => {
@@ -63,22 +63,20 @@ export class FriendsPageComponent {
     }
   }
   protected sendFriendRequest(dto: FriendRequestDto, newReq: boolean) {
-    this.friendService.sendFriendsRequest(dto).subscribe(success => {
+    this.friendService.sendFriendsRequest(dto).subscribe(() => {
         this.getFriendsRequests()
         this.getFriends()
-        let friendUsername = ''
         this.error = '';
         this.success = newReq ? 'Request sent!':'Request confirmed!';
       },
       (err) => {
-        let friendUsername = ''
         this.error = err.error.message;
         this.success = '';
       })
   }
   public getFriends() {
     this.friendService.getAllFriendsByUsername(this.username).subscribe(answers => {
-      this.friends = answers;
+      this.friends = answers.content;
     }, () => {
     })
   }

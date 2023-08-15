@@ -4,6 +4,7 @@ import {DOMAIN_PATH} from "../../environments/environment";
 import {map} from "rxjs";
 import {Workout} from "../../dto/Workout";
 import {WorkoutSaveDto} from "../../dto/WorkoutSaveDto";
+import {Page} from "../../dto/Page";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class WorkoutService {
   getAllWorkouts() {
     return this.httpClient.get(DOMAIN_PATH + '/workouts').pipe(
       map((response: any) => {
-        const workouts: Workout[] = response;
+        const workouts: Page<Workout> = response;
         return workouts;
       })
     );
@@ -30,10 +31,10 @@ export class WorkoutService {
     );
   }
 
-  getAllWorkoutsByUsername(username: string){
-    return this.httpClient.get(DOMAIN_PATH+"/workouts?username="+username).pipe(
+  getAllWorkoutsByUsername(username: string, page:number){
+    return this.httpClient.get(DOMAIN_PATH+"/workouts?username="+username+'&page='+page).pipe(
     map((response: any) => {
-      const allWorkouts: Workout[] = response;
+      const allWorkouts: Page<Workout> = response;
       return allWorkouts;
     })
     )

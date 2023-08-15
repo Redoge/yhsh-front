@@ -4,6 +4,7 @@ import {DOMAIN_PATH} from "../../environments/environment";
 import {map} from "rxjs";
 import {JwtService} from "../jwt/jwt.service";
 import {UserDto} from "../../dto/UserDto";
+import {Page} from "../../dto/Page";
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +31,10 @@ export class UserService {
     );
   }
 
-  getAll() {
-    return this.httpClient.get(DOMAIN_PATH + '/users').pipe(
+  getAll(page:number) {
+    return this.httpClient.get(DOMAIN_PATH + '/users?page='+page).pipe(
       map((response: any) => {
-        const users: UserDto[] = response;
+        const users: Page<UserDto> = response;
         return users;
       })
     );

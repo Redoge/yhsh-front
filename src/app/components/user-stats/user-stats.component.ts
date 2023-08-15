@@ -28,8 +28,8 @@ export class UserStatsComponent implements OnChanges{
   getStats() {
     this.loading = true;
     this.statsService.getStatsByUsername(this.username).subscribe(stats => {
-        this.stats = stats;
-      }, err => {
+        this.stats = stats.content;
+      }, () => {
         this.loading = false;
       }
       , () => {
@@ -40,8 +40,8 @@ export class UserStatsComponent implements OnChanges{
   filter(){
     this.loading = true;
     this.statsService.getStatsByUsernameAndFilter(this.username, this.startDate, this.endDate).subscribe(stats => {
-        this.stats = stats;
-      }, err => {
+        this.stats = stats.content;
+      }, () => {
         this.loading = false;
       }
       , () => {

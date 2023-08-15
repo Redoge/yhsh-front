@@ -42,6 +42,7 @@
       <h1>{{'you_dont_have_any_trainings_yet' | translate}}</h1>
     </div>
   </div>
+  <app-pagination-nav-component [page]="page"></app-pagination-nav-component>
   <hr>
   <div class="table-bordered d-flex justify-content-center">
     <form (ngSubmit)="removeActivity()">

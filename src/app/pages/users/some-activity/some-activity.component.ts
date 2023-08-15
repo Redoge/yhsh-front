@@ -7,6 +7,8 @@ import {Title} from "@angular/platform-browser";
 import {GroupedTrainingsDto} from "../../../dto/GroupedTrainingsDto";
 import {TrainingGrouperService} from "../../../service/util/grouper/training/training-grouper.service";
 import {TrainingDto} from "../../../dto/TrainingDto";
+import {Page} from "../../../dto/Page";
+import {PaginationService} from "../../../service/pagination/pagination.service";
 
 @Component({
   selector: 'app-some-activity',
@@ -21,12 +23,17 @@ export class SomeActivityComponent implements OnInit {
   protected groupedTrainings: GroupedTrainingsDto[] | undefined;
   private trainings: TrainingDto[] | undefined;
   protected error: string = '';
-
+  private activePage = 0;
+  protected page: Page<any> | undefined;
 
   constructor(private activityService: ActivityService, private activatedRoute: ActivatedRoute, private router: Router,
-              private trainingService: TrainingService, private titleService: Title, private trainingGrouper: TrainingGrouperService) {
+              private trainingService: TrainingService, private titleService: Title, private trainingGrouper: TrainingGrouperService, private paginationService: PaginationService) {
     this.titleService.setTitle("Activity");
     this.id = parseInt(<string>this.activatedRoute.snapshot.paramMap.get('id'));
+    this.paginationService.activePage$.subscribe(res=>{
+      this.activePage = res;
+      this.updateTrainings()
+    });
   }
 
   removeActivity() {
@@ -79,8 +86,9 @@ export class SomeActivityComponent implements OnInit {
   }
 
   private updateTrainings() {
-    this.trainingService.getTrainingsByActivityId(this.id).subscribe(res=>{
-      this.trainings = res;
+    this.trainingService.getTrainingsByActivityId(this.id, this.activePage-1).subscribe(res=> {
+      this.page = res;
+      this.trainings = res.content;
       this.groupedTrainings = this.trainingGrouper.groupByDate(<TrainingDto[]>this.trainings)
     }, error=>{
       console.log(error)

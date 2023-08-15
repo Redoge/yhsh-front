@@ -46,6 +46,7 @@ import { FriendsPageComponent } from './pages/users/friends-page/friends-page.co
 import { FriendUserPageComponent } from './pages/users/friend-user-page/friend-user-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ActivationEmailComponentComponent } from './components/activation-email-component/activation-email-component.component';
+import { PaginationNavComponentComponent } from './components/pagination-nav-component/pagination-nav-component.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -87,6 +88,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FriendUserPageComponent,
     FooterComponent,
     ActivationEmailComponentComponent,
+    PaginationNavComponentComponent,
   ],
   imports: [
     BrowserModule,
