@@ -1,6 +1,6 @@
 {
   "name": "yhsh-front",
-  "version": "0.1.1-dev",
+  "version": "0.1.4-dev",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
