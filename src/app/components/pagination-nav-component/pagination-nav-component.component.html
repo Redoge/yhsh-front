@@ -1,4 +1,4 @@
-<nav class="d-flex justify-content-center">
+<nav class="d-flex justify-content-center" *ngIf="pageCount!=0">
   <ul class="pagination">
     <li class="page-item">
       <a class="page-link text-secondary disabled"  aria-label="Previous" *ngIf="activePage<=1" (click)="setCurrentPage(activePage-1)">
