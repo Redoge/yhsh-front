@@ -4,7 +4,7 @@ export interface TrainingDto {
    activity: ActivityDto;
    count: number;
    startTime: Date;
-   userId: number;
    removed: boolean;
    mode: string;
+   weight: number
 }

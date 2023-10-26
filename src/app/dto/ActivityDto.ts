@@ -1,9 +1,10 @@
-import {UserDto} from "./UserDto";
+import {ActivityTypeDto} from "./ActivityTypeDto";
 
 export interface ActivityDto {
    id: number;
    name: string;
-   notation: string;
-   creator: UserDto;
+   type: ActivityTypeDto;
+   creatorId: number;
    removed: boolean;
+   withWeight: boolean
 }

@@ -13,10 +13,11 @@ export class TrainingService {
 
   constructor(private httpClient: HttpClient, private jwtService: JwtService) { }
 
-  saveTraining(activityId: number | undefined, count: number) {
+  saveTraining(activityId: number | undefined, count: number, weight: number) {
     const start = new Date().toISOString();
     const username = this.jwtService.getUsername();
-    return this.httpClient.post(DOMAIN_PATH + '/trainings', { activityId, count, start, username }).pipe( //TODO
+    console.log({ activityId, count, start, username, weight })
+    return this.httpClient.post(DOMAIN_PATH + '/trainings', { activityId, count, start, username, weight }).pipe( //TODO
       map((response: any) => {
         const training: TrainingDto = response;
         return training;

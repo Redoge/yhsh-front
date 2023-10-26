@@ -7,23 +7,27 @@ import {TrainingIntoWorkoutSaveDto} from "../../../dto/TrainingIntoWorkoutSaveDt
 import {WorkoutSaveDto} from "../../../dto/WorkoutSaveDto";
 import {Router} from "@angular/router";
 
+
+
 @Component({
   selector: 'app-new-workout',
   templateUrl: './new-workout.component.html',
   styleUrls: ['./new-workout.component.css']
 })
-export class NewWorkoutComponent implements OnInit {
+export class NewWorkoutComponent implements OnInit{
   protected activities: ActivityDto[] = [];
   protected workout: WorkoutSaveDto|undefined;
   protected username: string;
   protected activityId: number = 0;
   protected count = 0;
   protected trainings: TrainingIntoWorkoutSaveDto[] = [];
-  protected trainingsForShow: { name: String, count: number }[] = [];
+  protected trainingsForShow: { name: String, count: number, weight:number }[] = [];
   protected name: String = '';
   protected startTime: Date | undefined;
   protected loading = false;
   protected error = '';
+  protected weight = 0;
+  protected withWeight = false;
 
   constructor(private workoutService: WorkoutService, private activityService: ActivityService, private jwtService: JwtService,
               private router: Router) {
@@ -45,16 +49,16 @@ export class NewWorkoutComponent implements OnInit {
       let trainingDto: TrainingIntoWorkoutSaveDto = {
         activityId: this.activityId,
         count: this.count,
-        startTime: new Date
+        startTime: new Date,
+        weight: this.weight
       };
       this.trainings.push(trainingDto);
       if (this.trainings.length == 1) {
         this.startTime = new Date();
       }
-      this.trainingsForShow.push({name: this.getActivityNameById(this.activityId).name, count: this.count})
+      this.trainingsForShow.push({name: this.getActivityNameById(this.activityId).name, count: this.count, weight: this.weight})
     }
   }
-
   getActivityNameById(id: number) {
     return this.activities.find(a => a.id == id) || {name: ''};
   }
@@ -79,8 +83,17 @@ export class NewWorkoutComponent implements OnInit {
       this.error = "Name and trainings list can't be empty!!"
     }
   }
-
+  protected updateWithWeight(){
+    let withTemp = this.activities.find(s => s.id == this.activityId)
+    if(withTemp!=undefined){
+      this.withWeight =  withTemp.withWeight;
+    }
+    if(!this.withWeight){
+      this.weight = 0
+    }
+  }
   closeError() {
     this.error = ''
   }
+
 }

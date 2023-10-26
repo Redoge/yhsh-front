@@ -16,5 +16,8 @@
     <li class="list-group-item">
       {{'min' | translate}}: {{stat?.min + ' ' + stat?.notation}}
     </li>
+    <li *ngIf="stat?.avgWeight!=0" class="list-group-item">
+      {{'avgWeight' | translate}}: {{stat?.avgWeight| number: '1.2-2'}} {{"kg"|translate}}
+    </li>
   </ul>
 </div>

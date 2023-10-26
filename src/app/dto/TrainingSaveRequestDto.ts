@@ -1,6 +1,7 @@
 export interface TrainingSaveRequestDto {
   activityId: number;
-  userId: number;
+  username: string;
   count: number;
   start: Date;
+  weight: number;
 }

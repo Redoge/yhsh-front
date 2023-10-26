@@ -1,5 +1,6 @@
-export interface ActivitySaveRequestDtoActivitySaveRequestDto {
+export interface ActivitySaveRequestDto {
   name: string;
-  notation: string;
-  creatorId: number;
+  typeName: string;
+  username: string;
+  withWeight: boolean
 }

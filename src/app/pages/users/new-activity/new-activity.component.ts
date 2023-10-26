@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {ActivityService} from 'src/app/service/activity/activity.service';
 import {JwtService} from "../../../service/jwt/jwt.service";
 import {Title} from "@angular/platform-browser";
+import {ActivityTypeService} from "../../../service/activityType/activity-type.service";
 
 @Component({
   selector: 'app-new-activity',
@@ -11,19 +12,22 @@ import {Title} from "@angular/platform-browser";
 })
 export class NewActivityComponent {
 
-  protected notation: string = '';
+  protected typeName: string = '';
   protected name: string = '';
   protected username: string;
   protected error: string =  '';
+  protected withWeight = false;
+  protected activityTypes;
 
-  constructor(private jwtService: JwtService, private activityService: ActivityService, private router: Router,
-              private titleService: Title) {
+  constructor(jwtService: JwtService, private activityService: ActivityService, private router: Router,
+              private titleService: Title, activityTypeService: ActivityTypeService) {
+    this.activityTypes = activityTypeService.getAllActivityTypes()
     this.titleService.setTitle('New activity');
     this.username = jwtService.getUsername();
   }
 
   newActivity() {
-    this.activityService.createActivity(this.name, this.notation, this.username).subscribe(result => {
+    this.activityService.createActivity(this.name, this.typeName, this.username, this.withWeight).subscribe(result => {
       this.router.navigate(['/user/activities'])
     }, err => {
       this.error = "Activity " + this.name + " not created!!!"

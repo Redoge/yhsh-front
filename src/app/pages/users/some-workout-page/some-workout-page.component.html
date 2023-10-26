@@ -15,8 +15,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let training of workout?.trainings">
-        <td>{{training.activity.name}}</td>
-        <td>{{training.count}}</td>
+        <td>{{training.activity.name}} <b *ngIf="training.weight!=0"> -> {{training.weight}} {{'kg' |translate}}</b></td>
+        <td>{{training.count}} </td>
         <td>{{training.startTime | date: 'HH:mm'}}</td>
         <td><button class="btn btn-sm btn-secondary" (click)="removeTraining(training.id)">{{'remove' | translate}}</button></td>
       </tr>

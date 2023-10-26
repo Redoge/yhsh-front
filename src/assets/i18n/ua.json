@@ -79,5 +79,16 @@
   "enter_friends_username": "Введіть username друга",
   "sent_request": "Відправити запит",
   "start": "Початок",
-  "end": "Кінець"
+  "end": "Кінець",
+  "sec": "сек.",
+  "times": "раз",
+  "meters": "м.",
+  "with_weight": "З вагою",
+  "avgWeight": "Сер. вага",
+  "filter": "Фільтрувати",
+  "typeName": "Тип",
+  "Time": "Час",
+  "Quantity": "Повторення",
+  "Distance": "Дистанція",
+  "choose_from_list": "Виберіть з списку"
 }

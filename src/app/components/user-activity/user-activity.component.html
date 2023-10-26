@@ -42,12 +42,12 @@
                   </h6></td>
               </tr>
               <tr *ngFor="let training of dateTraining.trainings">
-                <td>{{training.activity.name}}
+                <td>{{training.activity.name}} <b *ngIf="training.activity.withWeight">-> {{training.weight}} {{'kg'|translate}}</b>
                   <svg height="20" width="20" *ngIf="training.mode == 'WORKOUT'">
                     <text x="0" y="15" fill="black">W</text>
                   </svg>
                 </td>
-                <td>{{training?.count + ' ' + training.activity.notation}}</td>
+                <td>{{training?.count + ' ' + training.activity.type.notation}}</td>
                 <td> {{ training.startTime | date: 'HH:mm' : 'local'}}</td>
               </tr>
               </tbody>

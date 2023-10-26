@@ -20,8 +20,9 @@ export class ActivityService {
       })
     );
   }
-  createActivity(name: string, notation: string, username: string) {
-    return this.httpClient.post(DOMAIN_PATH + '/activities', { name, notation, username }).pipe(
+  createActivity(name: string, typeName: string, username: string, withWeight: boolean) {
+    console.log({ name, typeName, username, withWeight })
+    return this.httpClient.post(DOMAIN_PATH + '/activities', { name, typeName, username, withWeight }).pipe(
       map((response: any) => {
         const activity: ActivityDto = response
         return activity;

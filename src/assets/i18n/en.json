@@ -79,6 +79,16 @@
   "enter_friends_username": "Enter friends username",
   "sent_request": "Sent request",
   "start": "Start",
-  "end": "End"
-
+  "end": "End",
+  "sec": "sec.",
+  "times": "times",
+  "meters": "meters",
+  "with_weight": "With weight",
+  "avgWeight": "Avg. weight",
+  "filter": "Filter",
+  "typeName": "Type",
+  "Time": "Time",
+  "Quantity": "Quantity",
+  "Distance": "Distance",
+  "choose_from_list": "Choose from list"
 }

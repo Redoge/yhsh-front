@@ -5,5 +5,6 @@ export interface UserActivityStatsDto {
   max: number;
   avg: number;
   trainingsCount: number;
+  avgWeight: number
   notation: string;
 }

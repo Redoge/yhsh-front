@@ -25,6 +25,7 @@ export class SomeActivityComponent implements OnInit {
   protected error: string = '';
   private activePage = 0;
   protected page: Page<any> | undefined;
+  protected weight:number=0;
 
   constructor(private activityService: ActivityService, private activatedRoute: ActivatedRoute, private router: Router,
               private trainingService: TrainingService, private titleService: Title, private trainingGrouper: TrainingGrouperService, private paginationService: PaginationService) {
@@ -48,7 +49,7 @@ export class SomeActivityComponent implements OnInit {
 
   add() {
     this.loading = true
-    this.trainingService.saveTraining(this.activity?.id, this.count).subscribe(() => {
+    this.trainingService.saveTraining(this.activity?.id, this.count, this.weight).subscribe(() => {
       this.updateTrainings()
       this.loading = false
     }, () => {

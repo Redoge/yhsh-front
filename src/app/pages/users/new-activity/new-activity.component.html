@@ -7,10 +7,14 @@
       <label for="name">{{'name' | translate}}:</label>
       <input class="form-control" type="text" id="name" placeholder="{{'enter_activity_name' |translate}}: " [(ngModel)]="name"
              name="name">
-      <label for="notation">{{'notation' | translate}}:</label>
-      <input class="form-control" type="text" id="notation" placeholder="{{'enter_activity_notation' |translate}}: "
-             [(ngModel)]="notation" name="notation">
-      <br>
+      <label for="typeName">{{'typeName' | translate}}:</label>
+      <select [(ngModel)]="typeName" class="form-control" id="typeName" name="typeName">
+        <option selected disabled >{{'choose_from_list' | translate}}</option>
+        <option  *ngFor="let activityType of activityTypes " value="{{activityType.name}}">{{activityType.name|translate}}</option>
+      </select><br>
+      <input class="form-check-input" type="checkbox" id="withWeight" [(ngModel)]="withWeight" name="withWeight"/>
+      <label for="withWeight">&emsp;{{'with_weight' | translate}}</label>
+      <br><br>
       <button type="submit" class="btn btn-secondary">{{'create'|translate}}</button>
     </form>
     <br>
