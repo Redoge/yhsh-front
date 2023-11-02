@@ -91,5 +91,7 @@
   "Quantity": "Quantity",
   "Distance": "Distance",
   "choose_from_list": "Choose from list",
-  "weight_chart": "Weight chart"
+  "weight_chart": "Weight chart",
+  "show_weight_chart": "Show weight chart",
+  "hide_weight_chart": "Hide weight chart"
 }

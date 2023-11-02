@@ -91,5 +91,7 @@
   "Quantity": "Повторення",
   "Distance": "Дистанція",
   "choose_from_list": "Виберіть з списку",
-  "weight_chart": "Графік ваги"
+  "weight_chart": "Графік ваги",
+  "show_weight_chart": "Покаати графік ваги",
+  "hide_weight_chart": "Сховати графік ваги"
 }

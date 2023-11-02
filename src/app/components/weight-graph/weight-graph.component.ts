@@ -10,7 +10,11 @@ export class WeightGraphComponent implements OnChanges{
   @Input() weight_list: UserWeight[] = [];
   chart: any;
   chartOptions: any;
+  isExpanded = false;
 
+  toggle() {
+    this.isExpanded = !this.isExpanded;
+  }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['weight_list'] && changes['weight_list'].currentValue) {
       this.weight_list = changes['weight_list'].currentValue
@@ -42,7 +46,6 @@ export class WeightGraphComponent implements OnChanges{
     };
 
   }
-
 
   private mapWeightListToDataPoints(): { x: Date, y: number }[] {
     return this.weight_list.map(w => {

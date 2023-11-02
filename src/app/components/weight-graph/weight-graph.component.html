@@ -1,6 +1,13 @@
-<div class="border rounded">
+<div class="d-flex justify-content-center">
+  <button (click)="toggle()" class="btn btn-sm btn-secondary" *ngIf="!isExpanded">{{'show_weight_chart'|translate}}</button>
+</div>
+<div class="border rounded" *ngIf="isExpanded" >
   <div class="d-flex justify-content-center">
     <h3>{{'weight_chart'|translate}}</h3>
   </div>
   <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
+  <hr>
+  <div class="d-flex justify-content-center m-3">
+    <button (click)="toggle()" class="btn btn-sm btn-secondary">{{'hide_weight_chart'|translate}}</button>
+  </div>
 </div>
