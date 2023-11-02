@@ -13,8 +13,8 @@ export class WeightGraphComponent implements OnChanges{
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['weight_list'] && changes['weight_list'].currentValue) {
-       this.weight_list = changes['weight_list'].currentValue
-       this.updateGraph()
+      this.weight_list = changes['weight_list'].currentValue
+      this.updateGraph()
     }
   }
   private updateGraph() {
@@ -24,22 +24,32 @@ export class WeightGraphComponent implements OnChanges{
       zoomEnabled: true,
       data: [{
         type: "line",
-        xValueFormatString: "DD-MMM-YYYY",
+        xValueFormatString: "DD MMM YYYY",
         yValueFormatString: "###.## kg",
         dataPoints: this.mapWeightListToDataPoints()
       }],
+      axisX: {
+        valueFormatString: "DD MMM YYYY", // Формат дати на осі X
+      },
       backgroundColor: "rgba(0, 0, 0, 0)",
-    }
+      axisY: {
+        title: "KG",
+      },
+      legend: {
+        cursor: "pointer",
+        verticalAlign: "top",
+      },
+    };
+
   }
 
 
-  private mapWeightListToDataPoints():any{
-    console.log(this.weight_list)
-    return  this.weight_list.map(w=>{
+  private mapWeightListToDataPoints(): { x: Date, y: number }[] {
+    return this.weight_list.map(w => {
       return {
         x: new Date(w.date),
         y: w.weight
       }
-    })
+    });
   }
 }
