@@ -58,7 +58,7 @@ export class UserProfileComponent implements OnChanges {
   private mapFieldByUserResponse(user: UserDto){
     this.user = user;
     this.heightSm = user.heightSm;
-    this.weightKg = user.weightKg;
+    this.weightKg = user.weightKg[user.weightKg.length-1].weight;
     this.sex = user.sex;
     this.bmi = this.userService.calculateBmi(this.heightSm, this.weightKg);
   }

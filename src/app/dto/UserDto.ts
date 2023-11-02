@@ -1,9 +1,12 @@
+import {UserWeight} from "./UserWeight";
+
+
 export interface UserDto {
   id: number,
   username: string,
   email: string,
   sex: string,
-  weightKg: number,
+  weightKg: UserWeight[],
   heightSm: number,
   userRole: string,
   enabled: boolean,
