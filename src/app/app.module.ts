@@ -47,6 +47,8 @@ import { FriendUserPageComponent } from './pages/users/friend-user-page/friend-u
 import { FooterComponent } from './components/footer/footer.component';
 import { ActivationEmailComponentComponent } from './components/activation-email-component/activation-email-component.component';
 import { PaginationNavComponentComponent } from './components/pagination-nav-component/pagination-nav-component.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { WeightGraphComponent } from './components/weight-graph/weight-graph.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -89,6 +91,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     ActivationEmailComponentComponent,
     PaginationNavComponentComponent,
+    WeightGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,6 +101,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
+    CanvasJSAngularChartsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

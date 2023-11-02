@@ -90,5 +90,6 @@
   "Time": "Час",
   "Quantity": "Повторення",
   "Distance": "Дистанція",
-  "choose_from_list": "Виберіть з списку"
+  "choose_from_list": "Виберіть з списку",
+  "weight_chart": "Графік ваги"
 }
