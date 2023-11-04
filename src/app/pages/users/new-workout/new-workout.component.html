@@ -7,16 +7,29 @@
     <div class="justify-content-center d-flex">
       <form (ngSubmit)="addActivity()">
         <label>{{'select_some_activity' | translate}}</label>
-        <select [(ngModel)]="activityId" name="activityId" class="form-select" (change)="updateWithWeight()">
-          <option selected disabled >{{'select_one_by_list' | translate}}</option>
+        <select [(ngModel)]="activityId" name="activityId" class="form-select" (change)="updateChangedActivity()">
           <option *ngFor="let activity of activities" [value]="activity.id"
                   value="{{activity.id}}">{{activity.name}}</option>
         </select>
-        <label>{{'count' | translate}}</label>
-        <input placeholder="{{'count' | translate}}" class="form-control" type="number" [(ngModel)]="count" name="count">
-        <div *ngIf="withWeight">
+
+
+        <label>{{pickedActivityType.notation | translate}}</label>
+        <div class="input-group mb-3">
+          <input placeholder="{{'count' | translate}}" class="form-control" type="number" [(ngModel)]="count" name="count">
+          <div class="input-group-append" *ngIf="pickedActivityType.name == 'Time'">
+            <span class="btn btn btn-outline-secondary" (click)="addFromStopwatch()">{{'from_stopwatch' | translate}}</span>
+          </div>
+        </div>
+
+
+        <div *ngIf="pickedWithWeights">
           <label>{{'weight' | translate}}</label><br>
           <input placeholder="{{'weight' | translate}}" class="form-control" type="number" [(ngModel)]="weight" name="weight"><br>
+        </div>
+        <div class="center" *ngIf="pickedActivityType.name == 'Time'">
+          <hr>
+          <app-stopwatch></app-stopwatch>
+          <hr>
         </div>
         <div class="d-flex justify-content-center">
           <input type="submit" value="{{'add_training' | translate}}" class="btn btn-secondary">
