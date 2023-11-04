@@ -36,11 +36,12 @@
           <td>{{'count' | translate}}</td>
           <td>{{'time' | translate}}</td>
           <td *ngIf="activity.withWeight">{{'weight' | translate}}</td>
+          <td>{{'remove' | translate}}</td>
         </tr>
         </thead>
         <tbody *ngFor="let dateTraining of groupedTrainings">
         <tr>
-          <td class="bg-body-secondary" colspan="3">
+          <td class="bg-body-secondary" colspan="4">
             <h6>{{ dateTraining.date | date:'dd' }} {{ (dateTraining.date | date:'MMMM') || '' | translate }} {{ dateTraining.date | date:'yyyy' }}</h6>
           </td>
         </tr>
