@@ -1,0 +1,11 @@
+<div id="stopwatch" class="center">
+  <span class="btn btn-sm btn-secondary m-1" (click)="isExpanded=!isExpanded">
+    {{ ((this.isExpanded ? "hide" : "show")+'_stopwatch') | translate}}
+  </span>
+  <div *ngIf="isExpanded">
+    <h2>{{seconds | time}}</h2>
+    <span class="btn btn-secondary m-1" (click)="stop()" *ngIf="isRunning">{{'to_stop' | translate}}</span>
+    <span class="btn btn-secondary m-1" (click)="start()" *ngIf="!isRunning">{{'to_start' | translate}}</span>
+    <span class="btn btn-secondary m-1" (click)="reset()">{{'to_reset' | translate}}</span>
+  </div>
+</div>
