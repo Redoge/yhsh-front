@@ -10,7 +10,7 @@
     <div class="input-group mb-3">
       <input class="form-control" type="number" id="name" min="1" [(ngModel)]="count"
              name="count">
-      <div class="input-group-append">
+      <div class="input-group-append" *ngIf="activity.type.name == 'Time'" >
         <span class="btn btn btn-outline-secondary" (click)="addFromStopwatch()">{{'from_stopwatch' | translate}}</span>
       </div>
     </div>
