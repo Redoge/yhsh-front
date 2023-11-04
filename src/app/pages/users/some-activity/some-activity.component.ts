@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ActivityService} from 'src/app/service/activity/activity.service';
 import {ActivityDto} from "../../../dto/ActivityDto";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {TrainingGrouperService} from "../../../service/util/grouper/training/tra
 import {TrainingDto} from "../../../dto/TrainingDto";
 import {Page} from "../../../dto/Page";
 import {PaginationService} from "../../../service/pagination/pagination.service";
-
+import {StopwatchComponent} from "../../../components/stopwatch/stopwatch.component";
 @Component({
   selector: 'app-some-activity',
   templateUrl: './some-activity.component.html',
@@ -26,7 +26,7 @@ export class SomeActivityComponent implements OnInit {
   private activePage = 0;
   protected page: Page<any> | undefined;
   protected weight:number=0;
-
+  @ViewChild(StopwatchComponent) stopwatch: any;
   constructor(private activityService: ActivityService, private activatedRoute: ActivatedRoute, private router: Router,
               private trainingService: TrainingService, private titleService: Title, private trainingGrouper: TrainingGrouperService, private paginationService: PaginationService) {
     this.titleService.setTitle("Activity");
@@ -95,5 +95,10 @@ export class SomeActivityComponent implements OnInit {
       console.log(error)
       this.error = 'Something went wrong';
     })
+  }
+
+  addFromStopwatch(): void {
+    this.count = this.stopwatch.seconds;
+    this.stopwatch.reset()
   }
 }

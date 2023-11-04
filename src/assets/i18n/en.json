@@ -93,5 +93,11 @@
   "choose_from_list": "Choose from list",
   "weight_chart": "Weight chart",
   "show_weight_chart": "Show weight chart",
-  "hide_weight_chart": "Hide weight chart"
+  "hide_weight_chart": "Hide weight chart",
+  "show_stopwatch":  "Show stopwatch",
+  "hide_stopwatch" : "Hide stopwatch",
+  "to_stop": "Stop",
+  "to_start": "Start",
+  "to_reset": "Reset",
+  "from_stopwatch": "From stopwatch"
 }

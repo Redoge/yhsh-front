@@ -49,6 +49,8 @@ import { ActivationEmailComponentComponent } from './components/activation-email
 import { PaginationNavComponentComponent } from './components/pagination-nav-component/pagination-nav-component.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { WeightGraphComponent } from './components/weight-graph/weight-graph.component';
+import { StopwatchComponent } from './components/stopwatch/stopwatch.component';
+import { TimePipe } from './pipes/time.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -92,6 +94,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ActivationEmailComponentComponent,
     PaginationNavComponentComponent,
     WeightGraphComponent,
+    StopwatchComponent,
+    TimePipe,
   ],
   imports: [
     BrowserModule,

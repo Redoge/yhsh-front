@@ -18,3 +18,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .main-container {
   flex: 1;
 }
+
+.center{
+  text-align: center;
+  align-content: center;
+}

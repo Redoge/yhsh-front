@@ -5,19 +5,28 @@
   </div>
 
   <form (ngSubmit)="add()">
+
     <label for="name">{{'count' | translate}}: [ {{activity.type.notation | translate}} ]</label>
-    <input class="form-control" type="number" id="name" min="1" [(ngModel)]="count"
-           name="count">
+    <div class="input-group mb-3">
+      <input class="form-control" type="number" id="name" min="1" [(ngModel)]="count"
+             name="count">
+      <div class="input-group-append">
+        <span class="btn btn btn-outline-secondary" (click)="addFromStopwatch()">{{'from_stopwatch' | translate}}</span>
+      </div>
+    </div>
     <div *ngIf="activity.withWeight">
       <label for="weight">{{'weight' | translate}}:  {{'kg' | translate}}</label>
       <input class="form-control" type="number" id="weight" min="1" [(ngModel)]="weight"
              name="weight">
     </div>
-    <br>
     <div class=" d-flex justify-content-center">
       <input type="submit" class="btn btn-secondary" value="{{'add' | translate}}"/>
     </div>
   </form>
+  <div class="center">
+    <hr>
+    <app-stopwatch *ngIf="activity.type.name == 'Time'"></app-stopwatch>
+  </div>
   <hr>
   <div class="container">
     <div class="scrolled-table" *ngIf="groupedTrainings.length > 0">
@@ -25,26 +34,28 @@
         <thead>
         <tr>
           <td>{{'count' | translate}}</td>
-          <td >{{'time' | translate}}</td>
-          <td *ngIf="activity.withWeight" >{{'weight' | translate}}</td>
+          <td>{{'time' | translate}}</td>
+          <td *ngIf="activity.withWeight">{{'weight' | translate}}</td>
         </tr>
         </thead>
         <tbody *ngFor="let dateTraining of groupedTrainings">
         <tr>
-          <td class="bg-body-secondary" colspan="3" ><h6>{{ dateTraining.date | date:'dd' }} {{ (dateTraining.date | date:'MMMM') || '' | translate }} {{ dateTraining.date | date:'yyyy' }}</h6></td>
+          <td class="bg-body-secondary" colspan="3">
+            <h6>{{ dateTraining.date | date:'dd' }} {{ (dateTraining.date | date:'MMMM') || '' | translate }} {{ dateTraining.date | date:'yyyy' }}</h6>
+          </td>
         </tr>
-       <tr *ngFor="let training of dateTraining.trainings">
-         <td>{{training.count + ' ' + activity.type.notation}}</td>
-         <td> {{ training.startTime | date: 'HH:mm'  }}</td>
-         <td *ngIf="activity.withWeight"> {{ training.weight }}  {{'kg'|translate}} </td>
-         <td>
-           <img  (click)="remove(training.id)"
+        <tr *ngFor="let training of dateTraining.trainings">
+          <td>{{training.count + ' ' + activity.type.notation}}</td>
+          <td> {{ training.startTime | date: 'HH:mm'  }}</td>
+          <td *ngIf="activity.withWeight"> {{ training.weight }}  {{'kg'|translate}} </td>
+          <td>
+            <img (click)="remove(training.id)"
                  ngSrc="/assets/icon/remove.png"
                  height="25" width="25"
                  alt="Remove" title="Remove"/>
-         </td>
-       </tr>
-       </tbody>
+          </td>
+        </tr>
+        </tbody>
       </table>
     </div>
     <div *ngIf="groupedTrainings.length == 0" class="justify-content-center d-flex dont-have-label">
