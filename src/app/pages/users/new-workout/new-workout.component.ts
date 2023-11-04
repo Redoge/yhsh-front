@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {WorkoutService} from "../../../service/workout/workout.service";
 import {ActivityService} from "../../../service/activity/activity.service";
 import {JwtService} from "../../../service/jwt/jwt.service";
@@ -6,9 +6,8 @@ import {ActivityDto} from "../../../dto/ActivityDto";
 import {TrainingIntoWorkoutSaveDto} from "../../../dto/TrainingIntoWorkoutSaveDto";
 import {WorkoutSaveDto} from "../../../dto/WorkoutSaveDto";
 import {Router} from "@angular/router";
-
-
-
+import {ActivityTypeDto} from "../../../dto/ActivityTypeDto";
+import {StopwatchComponent} from "../../../components/stopwatch/stopwatch.component";
 @Component({
   selector: 'app-new-workout',
   templateUrl: './new-workout.component.html',
@@ -27,7 +26,9 @@ export class NewWorkoutComponent implements OnInit{
   protected loading = false;
   protected error = '';
   protected weight = 0;
-  protected withWeight = false;
+  protected pickedWithWeights: boolean = false;
+  protected pickedActivityType: ActivityTypeDto  = {name:'~', notation: '~'};
+  @ViewChild(StopwatchComponent) stopwatch: any;
 
   constructor(private workoutService: WorkoutService, private activityService: ActivityService, private jwtService: JwtService,
               private router: Router) {
@@ -83,17 +84,19 @@ export class NewWorkoutComponent implements OnInit{
       this.error = "Name and trainings list can't be empty!!"
     }
   }
-  protected updateWithWeight(){
-    let withTemp = this.activities.find(s => s.id == this.activityId)
-    if(withTemp!=undefined){
-      this.withWeight =  withTemp.withWeight;
-    }
-    if(!this.withWeight){
-      this.weight = 0
+  protected updateChangedActivity(){
+    let pickedActivity = this.activities.find(s => s.id == this.activityId)
+    if (pickedActivity != undefined){
+      this.pickedWithWeights = pickedActivity.withWeight
+      this.pickedActivityType = pickedActivity.type
     }
   }
+
   closeError() {
     this.error = ''
   }
-
+  addFromStopwatch(): void {
+    this.count = this.stopwatch.seconds;
+    this.stopwatch.reset()
+  }
 }
