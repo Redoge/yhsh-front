@@ -93,5 +93,13 @@
   "choose_from_list": "Виберіть з списку",
   "weight_chart": "Графік ваги",
   "show_weight_chart": "Покаати графік ваги",
-  "hide_weight_chart": "Сховати графік ваги"
+  "hide_weight_chart": "Сховати графік ваги",
+  "show_stopwatch":  "Показати секундомір",
+  "hide_stopwatch" : "Сховати секундомір",
+  "to_stop": "Зупинити",
+  "to_start": "Почати",
+  "to_reset": "Скинути",
+  "from_stopwatch": "З секундоміру"
+
+
 }
